@@ -1,50 +1,3 @@
-// import React from "react";
-// import blackBg from "../assets/black_bg.png";
-// import coloredBg from "../assets/colored_bg.png";
-// import "../styles/Home.css";
-
-// const Home = () => {
-//   return (
-//     <div className="home-container" id="home">
-//       <div className="overlay-text">
-//         <div className="ml-15 text-white">
-//             <p className="text-4xl md:text-6xl font-semi-bold">Hello There !</p>
-//             <p style={{fontSize:'4rem'}} className="text-[50rem] md:text-6xl font-bold">I'm&nbsp; 
-//                 <span style={{fontSize:'7rem'}}  className="md:text-6xl bg-gradient-to-r from-[#a9f1df] to-[#ffbbbb] bg-clip-text text-transparent select-none">
-//                 Thurunu,
-//                 </span>
-//             </p>
-//             <p></p>
-//         </div>
-//         <div>
-          
-          
-//         </div>
-
-
-//       </div>
-//       <img src={blackBg} alt="Grayscale Background" className="base-image" />
-//       <img src={coloredBg} alt="Colored Background" className="hover-image" />
-//     </div>
-//   );
-// };
-
-// export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from "react";
 import blackBg from "../assets/black_bg.png";
 import coloredBg from "../assets/colored_bg.png";
@@ -57,9 +10,10 @@ const Home = () => {
         <div className="ml-15 text-white">
             <p className="text-4xl md:text-6xl font-semi-bold">Hello There !</p>
             <p style={{fontSize:'4rem'}} className="text-[50rem] md:text-6xl font-bold">I'm&nbsp; 
-                <span className="aurora-text">Thurunu</span>
+                <span style={{fontSize:'7rem'}}  className="md:text-6xl bg-gradient-to-r from-[#a9f1df] to-[#ffbbbb] bg-clip-text text-transparent select-none">
                 Thurunu,
-                </p>
+                </span>
+            </p>
             <p></p>
         </div>
         <div>
@@ -76,4 +30,20 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
