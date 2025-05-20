@@ -1,0 +1,69 @@
+.home-container {
+  position: relative;
+  width: 100%;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+.base-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.home-container:hover .hover-image {
+  opacity: 1;
+}
+
+.overlay-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  z-index: 2;
+}
+
+
+
+
+
+.aurora-text {
+  position: relative;
+  display: inline-block;
+  font-size: 7rem;
+  font-weight: bold;
+  background: repeating-radial-gradient(circle, var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4));
+  background-size: 400% 400%;
+  animation: aurora-gradient 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes aurora-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
