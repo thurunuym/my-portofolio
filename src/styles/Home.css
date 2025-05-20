@@ -41,29 +41,163 @@
 
 
 
-
-.aurora-text {
-  position: relative;
-  display: inline-block;
-  font-size: 7rem;
-  font-weight: bold;
-  background: repeating-radial-gradient(circle, var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4));
-  background-size: 400% 400%;
-  animation: aurora-gradient 8s ease infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+h1 {
+  font-size: 9vmin;
+  color: #8bf;
+  text-align: left;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  margin-left: 0;
+  margin-top: 15px;
 }
 
-@keyframes aurora-gradient {
-  0% {
-    background-position: 0% 50%;
+/* Typewriter effect 1 */
+@keyframes typing{
+
+    0%, 3.5%   { content: ""; }
+  1.5%       { content: "F"; }
+  2.5%       { content: "Fu"; }
+  3.5%       { content: "Ful"; }
+  4.5%       { content: "Full"; }
+  5.5%       { content: "Full-"; }
+  6.5%       { content: "Full-S"; }
+  7.5%       { content: "Full-St"; }
+  8.5%       { content: "Full-Sta"; }
+  9.5%       { content: "Full-Stac"; }
+  10.5%      { content: "Full-Stack"; }
+  11.5%      { content: "Full-Stack "; }
+  12.5%      { content: "Full-Stack D"; }
+  13.5%      { content: "Full-Stack De"; }
+  14.5%      { content: "Full-Stack Dev"; }
+  15.5%      { content: "Full-Stack Deve"; }
+  16.5%      { content: "Full-Stack Devel"; }
+  17.5%      { content: "Full-Stack Develo"; }
+  18.5%      { content: "Full-Stack Develop"; }
+  19.5%      { content: "Full-Stack Develope"; }
+  20.5%, 23% { content: "Full-Stack Developer"; }
+
+  
+ 24%        { content: "Full-Stack Develope"; }
+  25%        { content: "Full-Stack Develop"; }
+  26%        { content: "Full-Stack Develo"; }
+  27%        { content: "Full-Stack Devel"; }
+  28%        { content: "Full-Stack Deve"; }
+  29%        { content: "Full-Stack Dev"; }
+  30%        { content: "Full-Stack De"; }
+  31%        { content: "Full-Stack D"; }
+  32%        { content: "Full-Stack "; }
+  33%        { content: "Full-Stack"; }
+  34%        { content: "Full-Stac"; }
+  35%        { content: "Full-Sta"; }
+  36%        { content: "Full-St"; }
+  37%        { content: "Full-S"; }
+  38%        { content: "Full-"; }
+  39%        { content: "Full"; }
+  40%        { content: "Ful"; }
+  41%        { content: "Fu"; }
+  42%        { content: "F"; }
+  43%, 44%   { content: ""; }
+
+  /* UI/UX Enthusiast */
+  45%        { content: "U"; }
+  46%        { content: "UI"; }
+  47%        { content: "UI/"; }
+  48%        { content: "UI/U"; }
+  49%        { content: "UI/UX"; }
+  50%        { content: "UI/UX "; }
+  51%        { content: "UI/UX E"; }
+  52%        { content: "UI/UX En"; }
+  53%        { content: "UI/UX Ent"; }
+  54%        { content: "UI/UX Enth"; }
+  55%        { content: "UI/UX Enthu"; }
+  56%        { content: "UI/UX Enthus"; }
+  57%        { content: "UI/UX Enthusi"; }
+  58%        { content: "UI/UX Enthusia"; }
+  59%        { content: "UI/UX Enthusias"; }
+  60%        { content: "UI/UX Enthusiast"; }
+  61%, 63%   { content: "UI/UX Enthusiast"; }
+  /* Erase UI/UX Enthusiast */
+  64%        { content: "UI/UX Enthusias"; }
+  65%        { content: "UI/UX Enthusia"; }
+  66%        { content: "UI/UX Enthusi"; }
+  67%        { content: "UI/UX Enthus"; }
+  68%        { content: "UI/UX Enthu"; }
+  69%        { content: "UI/UX Enth"; }
+  70%        { content: "UI/UX Ent"; }
+  71%        { content: "UI/UX En"; }
+  72%        { content: "UI/UX E"; }
+  73%        { content: "UI/UX "; }
+  74%        { content: "UI/UX"; }
+  75%        { content: "UI/U"; }
+  76%        { content: "UI/"; }
+  77%        { content: "UI"; }
+  78%        { content: "U"; }
+  79%, 80%   { content: ""; }
+
+  /* Designer */
+  81%        { content: "D"; }
+  82%        { content: "De"; }
+  83%        { content: "Des"; }
+  84%        { content: "Desi"; }
+  85%        { content: "Desig"; }
+  86%        { content: "Design"; }
+  87%        { content: "Designe"; }
+  88%, 91%   { content: "Designer"; }
+  /* Erase Designer */
+  92%        { content: "Designe"; }
+  93%        { content: "Design"; }
+  94%        { content: "Desig"; }
+  95%        { content: "Desi"; }
+  96%        { content: "Des"; }
+  97%        { content: "De"; }
+  98%        { content: "D"; }
+  99%, 100%  { content: ""; }
+}
+
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter {
+  --caret: currentcolor;
+}
+
+.typewriter::before {
+  content: "";
+  animation: typing 13.5s infinite;
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blink 0.5s linear infinite;
+}
+
+.typewriter.thick::after {
+  border-right: 1ch solid var(--caret);
+}
+
+.typewriter.nocaret::after {
+  border-right: 0;
+}
+
+
+@media (prefers-reduced-motion) {
+  .typewriter::after {
+    animation: none;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+  
+  /* @keyframes sequencePopup {
+    0%, 100% { content: "developer"; }
+    25% { content: "writer"; }
+    50% { content: "reader"; }
+    75% { content: "human"; }
+  } */
+
+  .typewriter::before {
+    content: "developer";
+    animation: sequencePopup 12s linear infinite;
   }
 }
