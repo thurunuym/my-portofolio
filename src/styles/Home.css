@@ -3,9 +3,8 @@
 .home-container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
   overflow: hidden;
-  margin-top: 80px;
+  top: 20px;
 
 }
 

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="bg-black text-white shadow-md top-0 fixed w-full">
-      <div className="justify-end mx-auto px-4 py-4 flex justify-between items-center">
+    <div className="bg-black text-white shadow-md top-0 fixed w-full h-20">
+      <div className="justify-end mx-auto px-4 py-4 flex items-center">
         {/* <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#a9f1df] to-[#ffbbbb] text-2xl font-bold">
           YourName
         </div> */}
