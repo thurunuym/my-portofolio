@@ -20,12 +20,6 @@ const Home = () => {
 </h1>
 
         </div>
-        <div>
-          
-          
-        </div>
-
-
       </div>
       <img src={blackBg} alt="Grayscale Background" className="base-image" />
       <img src={coloredBg} alt="Colored Background" className="hover-image" />
