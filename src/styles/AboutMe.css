@@ -1,8 +1,8 @@
-body {
+
+
+/* body {
   background: #f8f8f8;
-  display:flex;
-  align-items: center;
-  height: 90vh;
+ 
 }
 
 .text-line {
@@ -27,4 +27,4 @@ body {
 @keyframes filling {
   0%, 90% { fill: #bac736; fill-opacity: 0; }
   100% { fill: #bac736; fill-opacity: 1; }
-}
+} */
