@@ -10,7 +10,7 @@ const Home = () => {
         <div className="ml-15 text-white">
             <p className="text-4xl md:text-6xl font-semi-bold">Hello There !</p>
             <p style={{fontSize:'4rem'}} className="text-[50rem] md:text-6xl font-bold">I'm&nbsp; 
-                <span style={{fontSize:'7rem'}}  className="md:text-6xl bg-gradient-to-r from-[#a9f1df] to-[#ffbbbb] bg-clip-text text-transparent select-none">
+                <span style={{fontSize:'7rem'}}  className="md:text-6xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent select-none">
                 Thurunu,
                 </span>
             </p>

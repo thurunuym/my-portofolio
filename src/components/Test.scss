@@ -1,0 +1,86 @@
+// $containerSize: 350px;
+// $cubeMargin: 17px;
+// $totalCube: 64;
+// $borderSize: 2px;
+// $col: 8;
+// $animationDuration: 1s;
+// $delayAnimation: 0.1s;
+
+// $cubeSize: ($containerSize / ($totalCube / $col)) - $cubeMargin;
+// $facesPosition: $cubeSize / 2;
+
+// * {
+//   box-sizing: border-box;
+// }
+
+// body, html {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   background: #262626;
+//   overflow: hidden;
+// }
+
+// .container {
+//   width: $containerSize;
+//   height: $containerSize;
+//   position: relative;
+//   perspective: 1000px;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+// }
+
+// .cube {
+//   width: $cubeSize;
+//   height: $cubeSize;
+//   transform-style: preserve-3d;
+//   position: absolute;
+//   animation: rotation $animationDuration infinite ease;
+// }
+
+// .cube div {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   border: $borderSize solid #C9C8C0;
+//   background: #262626;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .cube img {
+//   width: 60%;
+//   height: 60%;
+//   object-fit: contain;
+// }
+
+// .front  { transform: rotateY(0deg) translateZ($facesPosition); }
+// .back   { transform: rotateX(180deg) translateZ($facesPosition); }
+// .right  { transform: rotateY(90deg) translateZ($facesPosition); }
+// .left   { transform: rotateY(-90deg) translateZ($facesPosition); }
+// .top    { transform: rotateX(90deg) translateZ($facesPosition); }
+// .bottom { transform: rotateX(-90deg) translateZ($facesPosition); }
+
+// @keyframes rotation {
+//   0%   { transform: rotateX(0deg) rotateY(0deg); }
+//   100% { transform: rotateX(-90deg) rotateY(90deg); }
+// }
+
+// // Position and delay each cube
+// $columns: ($totalCube / $col) - 1;
+// $cubeI: 0;
+// $delayI: 0;
+// @for $y from 0 through $columns {
+//   $delayI: $y;
+//   @for $x from 0 through $columns {
+//     $cubeI: $cubeI + 1;
+//     $delayI: $delayI + 1;
+//     #cube-#{$cubeI} {
+//       left: $x * ($cubeSize + $cubeMargin);
+//       top: $y * ($cubeSize + $cubeMargin);
+//       animation-delay: $delayAnimation * $delayI;
+//     }
+//   }
+// }

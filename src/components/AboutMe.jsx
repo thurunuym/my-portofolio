@@ -12,24 +12,25 @@ const AboutMe = () => {
         <div className="w-1/6 "></div>
 
 
-        <div className="w-5/12 bg-gradient-to-r from-[#a9f1df] to-[#ffbbbb] p-6 flex items-center">
+        <div className="w-5/12 bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] p-6 flex items-center">
   <p
-    className="text-lg leading-relaxed text-[#2e2e2e]"
-    style={{
+      className="text-lg leading-relaxed text-[#2e2e2e]"
+      style={{
       fontFamily: 'Courgette, cursive',
       fontSize: '1.25rem',
       lineHeight: '2rem',
       color: '#333',
-      textShadow: '1px 1px 2px rgba(0, 0, 0, 0.05)'
+      textShadow: '1px 1px 2px rgba(0, 0, 0, 0.05)',
+      textAlign: 'Center'
     }}
   >
-    Blending technology with design is where I find my true passion — creating elegant,
+    <span className="text-4xl">Blending technology with design </span> <br/> <span className="text-3xl">is where I find my true passion </span><br/><br/><br/> creating elegant,
     user-friendly digital experiences that are both functional and beautiful. I thrive on
     solving complex problems through clean, efficient code and intuitive, thoughtful visuals.
   </p>
 </div>
 
-        <div className="w-5/12 bg-black">
+        <div className="w-5/12 bg-[#1e041b]">
 
         
         <div class="timeline">
