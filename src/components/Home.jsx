@@ -16,7 +16,7 @@ const Home = () => {
             </p>
 
             <h1 aria-label="Hi! I'm a Full-Stack Developer">
-  <span class="typewriter thick"></span>
+  <span className="typewriter thick"></span>
 </h1>
 
         </div>

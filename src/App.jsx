@@ -6,8 +6,10 @@ import AboutMe from './components/AboutMe';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Test from './components/Test';
-import Test10 from './components/FlipGrid';
+// import Test10 from './components/FlipGrid';
 import Test2 from './components/Test2';
+
+import './app.css';
 
 function App() {
 
@@ -16,13 +18,15 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/test" element={<Test/>}/>
-        <Route path="/test10" element={<Test10/>}/>
+        {/* <Route path="/test10" element={<Test10/>}/> */}
         <Route path="/Test2" element={<Test2/>}/>
       
       <Route path = "/" element={
       <>
           <Header/>
-          {/* <Home/>
+          <Home/>
+
+          {/*
           <AboutMe/> 
           <Services/>
           <Contact/>  */}
