@@ -6,16 +6,17 @@
   background-color: #000;
   z-index: 0;
   overflow: hidden;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   background-clip: padding-box;
 }
 
 .gradient-text-outline::before {
+    border: 1px;
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 6px;
-  padding: 2px;
+  padding: 1px;
   background: linear-gradient(90deg, #BFF098, #6FD6FF);
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 

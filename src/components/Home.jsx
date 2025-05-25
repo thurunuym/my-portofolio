@@ -8,17 +8,26 @@ const Home = () => {
     <div className="home-container" id="home">
       <div className="overlay-text">
         <div className="ml-15 text-white">
-            <p className="text-4xl md:text-6xl font-semi-bold">Hello There !</p>
-            <p style={{fontSize:'4rem'}} className="text-[50rem] md:text-6xl font-bold">I'm&nbsp; 
-                <span style={{fontSize:'7rem'}}  className="md:text-6xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent select-none">
-                Thurunu,
-                </span>
-            </p>
+          <p className="text-4xl md:text-4xl font-bold">Hello There !</p>
+          <p
+            style={{ fontSize: "4rem" }}
+            className="text-[50rem] md:text-6xl font-bold"
+          >
+            I'm&nbsp;
+            <span
+              style={{ fontSize: "7rem" }}
+              className="md:text-6xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent select-none"
+            >
+              Thurunu,
+            </span>
+          </p>
 
-            <h1 aria-label="Hi! I'm a Full-Stack Developer">
-  <span className="typewriter thick"></span>
-</h1>
-
+          <h1
+            className="martian-mono"
+            aria-label="Hi! I'm a Full-Stack Developer"
+          ><code>&lt;</code>
+            <span className="typewriter thick"></span><code>/&gt;</code>
+          </h1>
         </div>
       </div>
       <img src={blackBg} alt="Grayscale Background" className="base-image" />
@@ -28,20 +37,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

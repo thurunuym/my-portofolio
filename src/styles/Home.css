@@ -45,13 +45,23 @@
 
 
 h1 {
-  font-size: 9vmin;
+  font-size: 6vmin;
   color: #8bf;
   text-align: left;
   font-family: Lato, sans-serif;
   font-weight: 700;
   margin-left: 0;
   margin-top: 15px;
+}
+
+
+.martian-mono {
+  font-family: "Martian Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 /* Typewriter effect 1 */
