@@ -1,56 +1,57 @@
 import { FaLaptopCode, FaMobileAlt, FaPencilRuler, FaPaintBrush } from 'react-icons/fa';
 
 const Services = () => {
+  const services = [
+    {
+      icon: <FaLaptopCode className="text-4xl text-green-400 mb-4" />,
+      title: "Full-Stack Web Applications",
+      description:
+        "I build modern, scalable web apps using powerful technologies like React, Node.js, and MongoDB. From frontend to backend, I deliver seamless, secure, and responsive solutions tailored to your business needs.",
+    },
+    {
+      icon: <FaMobileAlt className="text-4xl text-blue-400 mb-4" />,
+      title: "Mobile-First Design",
+      description:
+        "I create responsive, mobile-optimized websites that provide a flawless user experience across all devices. Using frameworks like Tailwind CSS, I ensure your site looks stunning and performs perfectly.",
+    },
+    {
+      icon: <FaPencilRuler className="text-4xl text-purple-400 mb-4" />,
+      title: "UI/UX Prototyping",
+      description:
+        "I transform your ideas into interactive prototypes with tools like Figma. My designs focus on user-centered principles, ensuring intuitive navigation and engaging interfaces for your audience.",
+    },
+    {
+      icon: <FaPaintBrush className="text-4xl text-pink-400 mb-4" />,
+      title: "Custom Web Design",
+      description:
+        "I craft unique, visually appealing websites tailored to your brand identity. With a keen eye for aesthetics and functionality, I deliver designs that captivate and convert your visitors.",
+    },
+  ];
+
   return (
-    <div className="bg-gray-900 text-white py-12 px-6 width-full height-screen">
-      <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-
-      <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-        {/* Service 1 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-pink-300 transition duration-300">
-          <div className="flex items-center mb-4">
-            <FaLaptopCode className="text-pink-400 text-3xl mr-4" />
-            <h3 className="text-xl font-semibold">Custom Web Application Development</h3>
-          </div>
-          <p className="text-gray-300">
-            Build responsive, scalable, and secure web applications tailored to your business needs using modern technologies like React, Node.js, and MongoDB.
-          </p>
-        </div>
-
-        {/* Service 2 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-pink-300 transition duration-300">
-          <div className="flex items-center mb-4">
-            <FaMobileAlt className="text-pink-400 text-3xl mr-4" />
-            <h3 className="text-xl font-semibold">Mobile Application Development</h3>
-          </div>
-          <p className="text-gray-300">
-            Develop intuitive and high-performance mobile apps for Android and iOS using frameworks like Flutter and React Native for seamless user experiences.
-          </p>
-        </div>
-
-        {/* Service 3 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-pink-300 transition duration-300">
-          <div className="flex items-center mb-4">
-            <FaPencilRuler className="text-pink-400 text-3xl mr-4" />
-            <h3 className="text-xl font-semibold">UI/UX Designing</h3>
-          </div>
-          <p className="text-gray-300">
-            Design user-centric interfaces that combine beauty with usability. We create wireframes, prototypes, and design systems using Figma and Adobe XD.
-          </p>
-        </div>
-
-        {/* Service 4 */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-pink-300 transition duration-300">
-          <div className="flex items-center mb-4">
-            <FaPaintBrush className="text-pink-400 text-3xl mr-4" />
-            <h3 className="text-xl font-semibold">Graphic Designing</h3>
-          </div>
-          <p className="text-gray-300">
-            Enhance your brand with professional graphic design services including logos, banners, social media posts, and marketing materials.
-          </p>
+    <section id="services" className="py-20">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent text-center mb-12">My Services</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-black p-6 rounded-lg border-2 border-gradient-to-r from-[#BFF098] to-[#6FD6FF] "
+              style={{
+                borderImage: 'linear-gradient(to right, #BFF098, #6FD6FF) 1',
+                borderImageSlice: 1,
+              }}
+            >
+              <div className="flex flex-col items-center text-center">
+                {service.icon}
+                <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
+                <p className="text-gray-300 text-base">{service.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

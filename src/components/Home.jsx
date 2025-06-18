@@ -32,7 +32,11 @@ const Home = () => {
       </div>
       <img src={blackBg} alt="Grayscale Background" className="base-image" />
       <img src={coloredBg} alt="Colored Background" className="hover-image" />
+   
+   <div className="bottom"></div>
+
     </div>
+
   );
 };
 

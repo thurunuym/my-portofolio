@@ -1,67 +1,38 @@
-import "../styles/AboutMe.css";
-import "../styles/AboutMe.scss";
-
+import styles from "./AboutMe.module.css";
 
 const AboutMe = () => {
   return (
-    <div>
+    <section id="about" className="mt-2 py-20 h-screen">
+      <div className="container mx-auto px-4 h-full">
+        <div className="flex flex-col sm:flex-row gap-6 max-w-5xl mx-auto h-full">
 
-      <div className="w-full h-screen">
-        <div className="h-20"></div>
-<div className="flex flex-row h-full">
-        <div className="w-1/6 "></div>
-
-
-        <div className="w-5/12 bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] p-6 flex items-center">
-  <p
-      className="text-lg leading-relaxed text-[#2e2e2e]"
-      style={{
-      fontFamily: 'Courgette, cursive',
-      fontSize: '1.25rem',
-      lineHeight: '2rem',
-      color: '#333',
-      textShadow: '1px 1px 2px rgba(0, 0, 0, 0.05)',
-      textAlign: 'Center'
-    }}
-  >
-    <span className="text-4xl">Blending technology with design </span> <br/> <span className="text-3xl">is where I find my true passion </span><br/><br/><br/> creating elegant,
-    user-friendly digital experiences that are both functional and beautiful. I thrive on
-    solving complex problems through clean, efficient code and intuitive, thoughtful visuals.
-  </p>
-</div>
-
-        <div className="w-5/12 bg-[#1e041b]">
-
-        
-        <div class="timeline">
-  
-  <h2 class="timeline__item timeline__item--year">Present</h2>
-  
-  <div class="timeline__item">
-    <h3 class="timeline__title">University of Kelaniya</h3>
-  </div>
-  
-  <h2 class="timeline__item timeline__item--year">2022</h2>
-  
-  <div class="timeline__item">
-    <h3 class="timeline__title">IBA Campus</h3>
-  </div>
-  
-  <h2 class="timeline__item timeline__item--year">2020</h2>
-  
-  <div class="timeline__item">
-    <h3 class="timeline__title">Dharmaraja College, Kandy</h3>
-  </div>
-
-    <h2 class="timeline__item timeline__item--year">2006</h2>
-
-
-
-        </div>
-        
+          <div className={`${styles.box} ${styles.leftBox} hidden sm:flex flex-1 p-6 rounded-[6px] shadow-md`}>
+            <div className="flex flex-col items-center text-center">
+              <h3 className="text-2xl font-semibold text-white">My Journey</h3>
+              <p className="text-white">
+                I’m a passionate developer with a love for creating impactful web solutions. My journey started with a curiosity for code and has grown into a career of building user-focused applications.
+              </p>
+            </div>
+          </div>
+          <div className={`${styles.box} ${styles.middleBox} flex-1 p-6 rounded-[6px] shadow-md`}>
+            <div className="flex flex-col items-center text-center">
+              <h3 className="text-2xl font-semibold text-white mb-4">My Skills</h3>
+              <p className="text-white">
+                Proficient in React, Node.js, and Tailwind CSS, I specialize in crafting responsive, scalable web applications with a focus on performance and user experience.
+              </p>
+            </div>
+          </div>
+          <div className={`${styles.box} ${styles.rightBox} flex-1 p-6 rounded-[6px] shadow-md`}>
+            <div className="flex flex-col items-center text-center">
+              <h3 className="text-2xl font-semibold text-white mb-4">My Experience</h3>
+              <p className="text-white">
+                With years of experience in full-stack development, I’ve worked on diverse projects, from e-commerce platforms to personal portfolios, delivering clean and efficient code.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div></div>
+    </section>
   );
 };
 

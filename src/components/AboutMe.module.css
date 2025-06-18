@@ -1,0 +1,14 @@
+.box {
+  background: transparent;
+  
+}
+
+.leftBox, .rightBox {
+  background: linear-gradient(to right, rgba(191, 240, 152, 0.15), rgba(111, 214, 255, 0.15));
+
+  
+}
+
+.middleBox {
+  background: linear-gradient(to right, #BFF098, #6FD6FF);
+}

@@ -41,7 +41,10 @@
   z-index: 2;
 }
 
-
+.bottom{
+  background-color: red;
+  height: 60px;
+}
 
 
 h1 {
@@ -179,7 +182,7 @@ h1 {
 
 .typewriter::before {
   content: "";
-  animation: typing 13.5s infinite;
+  animation: typing 11s infinite;
 }
 
 .typewriter::after {
