@@ -4,6 +4,39 @@
 
    body {
      background: linear-gradient(90deg, #000000, #0A0A0A);
+
+
    }
+
+
+   body::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: #6FD6FF;
+  border-radius: 50%;
+  filter: blur(250px); /* 520 is too strong, try half */
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+}
+   body::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: #BFF098;
+  border-radius: 50%;
+  filter: blur(250px); /* 520 is too strong, try half */
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+}
+
 
  
