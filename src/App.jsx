@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import AboutMe from "./components/AboutMe";
 import Services from "./components/Services";
-
+import TechStack from "./components/TechStack";
 
 import "./app.css";
 
@@ -22,7 +22,8 @@ function App() {
               <Header />
               <Home />
               <AboutMe /> 
-              <Services/>        
+              <Services/>   
+              <TechStack/>     
                 
             </>
           }

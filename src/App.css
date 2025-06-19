@@ -37,15 +37,15 @@ body::after {
 /* Extra gradient circle using an actual element */
 .gradient-circle {
   position: absolute;
-  top: 60%;
+  top: 250%;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 400px;
+  width: 100px;
+  height: 100px;
   background: linear-gradient(135deg, #BFF098, #6FD6FF);
   border-radius: 50%;
   filter: blur(260px);
-  opacity: 0.6;
+  opacity: 1;
   pointer-events: none;
   z-index: -1;
 }

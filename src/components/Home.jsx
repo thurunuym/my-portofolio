@@ -1,6 +1,6 @@
 import React from "react";
 import blackBg from "../assets/black_bg.png";
-import coloredBg from "../assets/colored_bg.png";
+import coloredBg from "../assets/coloredBg.png";
 import "../styles/Home.css";
 
 const Home = () => {
