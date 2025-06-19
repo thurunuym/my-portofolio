@@ -29,7 +29,9 @@ const Services = () => {
   ];
 
   return (
+    
     <section id="services" className="py-20">
+      <div class="gradient-circle"></div>
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent text-center mb-12">My Services</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
