@@ -38,7 +38,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-black p-6 rounded-lg border-2 border-gradient-to-r from-[#BFF098] to-[#6FD6FF] "
+              className="bg-black p-6 rounded-lg border-2 "
               style={{
                 borderImage: 'linear-gradient(to right, #BFF098, #6FD6FF) 1',
                 borderImageSlice: 1,

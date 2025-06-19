@@ -4,6 +4,7 @@
 
    body {
      background: linear-gradient(90deg, #000000, #0A0A0A);
+     overflow-x: hidden;
    }
 
 
@@ -18,6 +19,7 @@ body::after {
   opacity: 0.6;
   pointer-events: none;
   z-index: -1;
+
 }
 
 /* Left solid circle */
@@ -32,6 +34,7 @@ body::after {
   background: #6FD6FF;
   top: 50%;
   right: -100px;
+
 }
 
 /* Extra gradient circle using an actual element */
@@ -44,7 +47,7 @@ body::after {
   height: 100px;
   background: linear-gradient(135deg, #BFF098, #6FD6FF);
   border-radius: 50%;
-  filter: blur(260px);
+  filter: blur(180px);
   opacity: 1;
   pointer-events: none;
   z-index: -1;
