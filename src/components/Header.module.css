@@ -2,20 +2,20 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 2px;
   background-color: #000;
   z-index: 0;
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 0.2px solid transparent;
   background-clip: padding-box;
 }
 
 .gradient-text-outline::before {
-    border: 1px;
+    border: 0.2px;
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 1px;
   background: linear-gradient(90deg, #BFF098, #6FD6FF);
   -webkit-mask: 

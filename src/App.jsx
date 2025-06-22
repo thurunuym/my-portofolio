@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import AboutMe from "./components/AboutMe";
 import Services from "./components/Services";
 import TechStack from "./components/TechStack";
-
+import Projects from "./components/Projects";
 import "./app.css";
 
 
@@ -24,6 +24,7 @@ function App() {
               <AboutMe /> 
               <Services/>   
               <TechStack/>     
+              <Projects/>
                 
             </>
           }
