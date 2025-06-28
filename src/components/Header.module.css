@@ -1,25 +1,27 @@
+
+
 .gradient-text-outline {
   position: relative;
   display: inline-block;
   padding: 0.5rem 1rem;
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: #000;
   z-index: 0;
   overflow: hidden;
   border: 0.2px solid transparent;
   background-clip: padding-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gradient-text-outline::before {
-    border: 0.2px;
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 2px;
-  padding: 1px;
+  border-radius: 4px;
+  padding: 0.5px;
   background: linear-gradient(90deg, #BFF098, #6FD6FF);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
@@ -34,4 +36,13 @@
   color: transparent;
   position: relative;
   z-index: 1;
+}
+
+.hover-3d:hover {
+  transform: perspective(500px) translateZ(50px);
+
+}
+
+.hover-3d:active {
+  transform: perspective(600px) translateZ(5px);
 }
