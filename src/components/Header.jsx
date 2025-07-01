@@ -44,7 +44,9 @@ export default function Header() {
       <div>
         <img
           className={`transition-all duration-300 opacity-100 ${
-            isScrolled ? "lg:h-18 lg:opacity-65 lg:group-hover:opacity-100 " : "lg:h-25"
+            isScrolled
+              ? "lg:h-18 lg:opacity-65 lg:group-hover:opacity-100 "
+              : "lg:h-25"
           } h-15`}
           src={thurunuym}
           alt="Logo"
@@ -60,7 +62,11 @@ export default function Header() {
             className={`font-semibold text-base outline-none transition-all duration-300
               ${styles["gradient-text-outline"]} 
               ${styles["hover-3d"]}
-              ${isScrolled ? "lg:opacity-65 group-hover:opacity-100" : "lg:opacity-100"}`}
+              ${
+                isScrolled
+                  ? "lg:opacity-65 group-hover:opacity-100"
+                  : "lg:opacity-100"
+              }`}
             tabIndex="0"
           >
             <span>{item.label}</span>
