@@ -14,21 +14,33 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container" id="home" onMouseMove={handleMouseMove}>
-      <div className="overlay-text">
-        <div className="ml-15 text-white">
-          <p className="text-4xl md:text-4xl font-bold">Hello There !</p>
-          <p style={{ fontSize: "4rem" }} className="text-[50rem] md:text-6xl font-bold">
+    <div
+      className="home-container"
+      id="home"
+      onMouseMove={handleMouseMove}
+      onTouchMove={(e) => {
+        if (e.touches && e.touches.length > 0) {
+          const touch = e.touches[0];
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = touch.clientX - rect.left;
+          const y = touch.clientY - rect.top;
+          setMousePosition({ x, y });
+        }
+      }}
+    >
+      <div className="overlay-text ml-4 lg:ml-0">
+        <div className="ml-4 md:ml-15 text-white">
+          <p className="text-base md:text-xl lg:text-4xl font-bold dm-serif-text-regular">Hello There !</p>
+          <p className="text-2xl md:text-5xl lg:text-6xl font-bold dm-serif-text-regular">
             I'm&nbsp;
             <span
-              style={{ fontSize: "7rem" }}
-              className="md:text-6xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent select-none"
+              
+              className="text-4xl md:text-7xl lg:text-9xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent select-none"
             >
               Thurunu,
             </span>
           </p>
-
-          <h1 className="martian-mono" aria-label="Hi! I'm a Full-Stack Developer">
+          <h1 className="martian-mono text-sm md:text-2xl lg:text-5xl" aria-label="Hi! I'm a Full-Stack Developer">
             <code>&lt;</code>
             <span className="typewriter thick"></span>
             <code>/&gt;</code>
@@ -48,7 +60,7 @@ const Home = () => {
         <img src={coloredBg} alt="Colored Background" />
       </div>
 
-      <div className="bottom"></div>
+ 
     </div>
   );
 };

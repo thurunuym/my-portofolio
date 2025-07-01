@@ -1,61 +1,22 @@
 import React, { useState } from "react";
 import styles from "./Projects.module.css";
+import chatwhizImg from "../assets/chatwhiz.png";
+import githubIcon from "../assets/icons/github.svg";
+import linkIcon from "../assets/icons/link.svg";
+import videoIcon from "../assets/icons/video.svg";
+
 
 const projects = [
   {
     name: "Chatwhiz",
     description: "A real-time chat application built for seamless chatting.",
-    image: "assets/chatwhiz.png",
+    image: "chatwhiz.png",
     technologies: ["React", "Node.js", "Socket.io"],
     github: "https://github.com/thurunuym/ChatWhiz",
     live: "https://chatwhiz-kpvi.onrender.com/",
-    video: "assets/chatwhiz.mp4",
+    video: "../assets/videos/chatwhiz.mp4",
   },
-   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: "assets/chatwhiz.png",
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: "assets/chatwhiz.mp4",
-  },
-   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: "assets/chatwhiz.png",
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: "assets/chatwhiz.mp4",
-  },
-   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: "assets/chatwhiz.png",
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: "assets/chatwhiz.mp4",
-  },
-   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: "assets/chatwhiz.png",
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: "assets/chatwhiz.mp4",
-  },
-   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: "assets/chatwhiz.png",
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: "assets/chatwhiz.mp4",
-  }
+
 ];
 
 // Generate stable random transforms for all cards
@@ -70,6 +31,10 @@ const delays = Array.from({ length: projects.length }, () => `${Math.random() * 
 
 const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const imageMap = {
+  "chatwhiz.png": chatwhizImg,
+};
 
   return (
     <section id="projects" className="py-20 px-8 md:px-20 relative">
@@ -98,12 +63,12 @@ const Projects = () => {
             }}
           >
             <img
-              src={project.image}
+              src={imageMap[project.image] || project.image}
               alt={project.name}
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
-            <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-            <p className="text-white mb-2">{project.description}</p>
+            <h3 className="text-xl font-bold text-black mb-2">{project.name}</h3>
+            <p className="text-black mb-2">{project.description}</p>
 
             {/* Technologies */}
             <div className="flex flex-wrap gap-2 mb-3">
@@ -121,17 +86,18 @@ const Projects = () => {
             <div className="flex justify-start gap-4 mt-3">
               {project.github && (
                 <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  <img src="assets/icons/github.svg" alt="GitHub" className="w-6 h-6" />
+                  <img src={githubIcon} alt="GitHub"     className="w-8 h-8 p-1 rounded-full border-none bg-white hover:border transition duration-300"
+ />
                 </a>
               )}
               {project.live && (
                 <a href={project.live} target="_blank" rel="noopener noreferrer">
-                  <img src="assets/icons/link.svg" alt="Live Site" className="w-6 h-6" />
+                  <img src={linkIcon} alt="Live Site" className="w-6 h-6" />
                 </a>
               )}
               {project.video && (
                 <a href={project.video} target="_blank" rel="noopener noreferrer">
-                  <img src="assets/icons/video.svg" alt="Demo Video" className="w-6 h-6" />
+                  <img src={videoIcon} alt="Demo Video" className="w-6 h-6" />
                 </a>
               )}
             </div>

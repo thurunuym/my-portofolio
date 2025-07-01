@@ -21,11 +21,22 @@
   top: 0;
   left: 0;
   width: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 1;
   max-height: 600px;
+  pointer-events: none; 
+  z-index: 1;
+}
+
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hover-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
 
 .home-container:hover .hover-image {
@@ -37,35 +48,24 @@
   inset: 0;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: flex-start;
   z-index: 2;
-}
-
-.bottom{
-  background-color: red;
-  height: 80px;
 }
 
 
 h1 {
-  font-size: 6vmin;
   color: #8bf;
   text-align: left;
   font-family: Lato, sans-serif;
   font-weight: 700;
-  margin-left: 0;
   margin-top: 15px;
 }
 
 
 .martian-mono {
   font-family: "Martian Mono", monospace;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-}
+  font-style: normal;}
 
 /* Typewriter effect 1 */
 @keyframes typing{

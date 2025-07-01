@@ -6,6 +6,10 @@
      background: linear-gradient(90deg, #000000, #101010);
      overflow-x: hidden;
    }
+   
+   html {
+  scroll-behavior: smooth;
+}
 
 
 body::before,
