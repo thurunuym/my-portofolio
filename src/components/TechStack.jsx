@@ -32,7 +32,7 @@ const TechStack = () => {
             background: "#000",
           }}
         >
-          <div className="grid grid-cols-[150px_auto] items-center gap-y-16 max-w-4xl mx-auto px-2 lg:px-4">
+          <div className="grid grid-cols-[150px_auto] items-center gap-y-8 lg:gap-y-16 max-w-4xl mx-auto px-2 lg:px-4">
             {Object.entries(techStacks).map(([section, logos]) => (
               <React.Fragment key={section}>
                 <h3 className="text-lg lg:text-2xl font-semibold text-white">{section}</h3>
