@@ -4,8 +4,8 @@ import "../styles/AboutMe.scss";
 const AboutMe = () => {
   return (
     <section id="about" className="mt-2 py-20 h-screen">
-      <div className="container mx-auto px-4 h-full">
-        <div className="flex flex-col sm:flex-row gap-6 max-w-7xl mx-auto h-full">
+      <div className="container mx-auto px-10 h-full">
+        <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto h-full">
           <div
             className={`${styles.box} ${styles.leftBox} hidden sm:flex flex-1 p-6 rounded-[6px] shadow-md`}
           >

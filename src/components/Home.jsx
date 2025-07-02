@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div
       className="home-container"
-      id="home"
+            id="home"
       onMouseMove={handleMouseMove}
       onTouchMove={(e) => {
         if (e.touches && e.touches.length > 0) {
