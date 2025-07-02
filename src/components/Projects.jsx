@@ -16,6 +16,33 @@ const projects = [
     live: "https://chatwhiz-kpvi.onrender.com/",
     video: "../assets/videos/chatwhiz.mp4",
   },
+  {
+    name: "Chatwhiz",
+    description: "A real-time chat application built for seamless chatting.",
+    image: "chatwhiz.png",
+    technologies: ["React", "Node.js", "Socket.io"],
+    github: "https://github.com/thurunuym/ChatWhiz",
+    live: "https://chatwhiz-kpvi.onrender.com/",
+    video: "../assets/videos/chatwhiz.mp4",
+  },
+  {
+    name: "Chatwhiz",
+    description: "A real-time chat application built for seamless chatting.",
+    image: "chatwhiz.png",
+    technologies: ["React", "Node.js", "Socket.io"],
+    github: "https://github.com/thurunuym/ChatWhiz",
+    live: "https://chatwhiz-kpvi.onrender.com/",
+    video: "../assets/videos/chatwhiz.mp4",
+  },
+  {
+    name: "Chatwhiz",
+    description: "A real-time chat application built for seamless chatting.",
+    image: "chatwhiz.png",
+    technologies: ["React", "Node.js", "Socket.io"],
+    github: "https://github.com/thurunuym/ChatWhiz",
+    live: "https://chatwhiz-kpvi.onrender.com/",
+    video: "../assets/videos/chatwhiz.mp4",
+  }
 
 ];
 
