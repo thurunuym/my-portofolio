@@ -1,1 +1,60 @@
 @import "tailwindcss";
+
+
+
+   body {
+     background: linear-gradient(90deg, #000000, #101010);
+     overflow-x: hidden;
+   }
+
+   html {
+  scroll-behavior: smooth;
+    scroll-padding-top: 70px; 
+
+}
+
+
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(260px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+
+}
+
+/* Left solid circle */
+body::before {
+  background: #BFF098;
+  top: 80%;
+  left: -100px;
+}
+
+/* Right solid circle */
+body::after {
+  background: #6FD6FF;
+  top: 50%;
+  right: -100px;
+
+}
+
+/* Extra gradient circle using an actual element */
+.gradient-circle {
+  position: absolute;
+  top: 250%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #BFF098, #6FD6FF);
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 1;
+  pointer-events: none;
+  z-index: -1;
+}
