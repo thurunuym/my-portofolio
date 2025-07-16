@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaLinkedin, FaGithub, FaMedium } from 'react-icons/fa';
+import '../styles/ContactBar.css'; 
 
 const ContactBar = () => {
   const [showText, setShowText] = useState(true);
@@ -7,29 +8,46 @@ const ContactBar = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setShowText(prev => !prev);
-    }, 2000); // 1.5 seconds
-
+    }, 4000); 
     return () => clearInterval(interval); // Cleanup
   }, []);
 
   return (
-    <div className='bg-amber-300 h-full w-full flex items-center justify-center text-black text-lg font-bold'>
-      {showText ? (
-        <div className='transition-opacity flex items-center duration-500 h-full'>Get in Touch</div>
-      ) : (
-        <div className='flex items-center gap-4 text-2xl h-full'>
-          <a href='https://linkedin.com' target='_blank' rel='noreferrer'>
-            <FaLinkedin />
-          </a>
-          <a href='https://github.com' target='_blank' rel='noreferrer'>
-            <FaGithub />
-          </a>
-          <a href='https://medium.com' target='_blank' rel='noreferrer'>
-            <FaMedium />
-          </a>
-        </div>
-      )}
-    </div>
+<div
+  style={{
+    background:
+      'linear-gradient(to right, rgba(191, 240, 152, 0.35), rgba(111, 214, 255, 0.35))',
+  }}
+  className="lexend-peta-font h-full w-full flex items-center justify-center text-black text-xl relative overflow-hidden"
+>
+  {/* Get in Touch Text */}
+  <div style={{ transitionDuration: '2200ms' }}
+    className={`absolute transition-opacity ${
+      showText ? 'opacity-100' : 'opacity-0 pointer-events-none'
+    } flex items-center h-full` }
+  >
+    Get in Touch
+  </div>
+
+  {/* Social Icons */}
+  <div style={{ transitionDuration: '2200ms' }}
+    className={`absolute transition-opacity fade-in-out ${
+      showText ? 'opacity-0 pointer-events-none' : 'opacity-100'
+    } flex items-center gap-7 text-3xl h-full`}
+  >
+    <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+      <FaLinkedin />
+    </a>
+    <a href="https://github.com" target="_blank" rel="noreferrer">
+      <FaGithub />
+    </a>
+    <a href="https://medium.com" target="_blank" rel="noreferrer">
+      <FaMedium />
+    </a>
+  </div>
+</div>
+
+
   );
 };
 

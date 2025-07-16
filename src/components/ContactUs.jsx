@@ -49,17 +49,23 @@ const ContactUs = () => {
         muted
         playsInline
       ></video>
-      {/* Overlay */}
-      <div className="relative z-10 flex w-full px-4 md:px-20 justify-between items-center">
+  <h2 className="block md:hidden text-black text-5xl font-bold absolute top-10 mx-auto z-10">
+    Contact Me
+  </h2>     
+   {/* Overlay */}
+      <div className="relative z-10 flex w-full px-4  md:px-20 justify-between items-center">
         {/* Left Side: Vertical "Contact Me" */}
         <div className="hidden md:flex flex-col items-left">
+          {/* <h2 className="text-black text-[1rem] leading-[9rem] font-bold rotate-[-90deg] whitespace-nowrap">
+            Have Something to Say?
+          </h2> */}
           <h2 className="text-black text-[9rem] leading-[9rem] font-bold rotate-[-90deg] whitespace-nowrap">
             Contact <br /> Me
           </h2>
         </div>
 
         {/* Right Side: Form Box */}
-        <div className="bg-black bg-opacity-90 p-10 rounded-md w-full md:w-[60%] h-[80vh] shadow-[0_0_30px_#9DE3FF] flex flex-col justify-center">
+        <div className="bg-black bg-opacity-90 p-10 rounded-md w-full md:w-[60%] mt-12 h-[80vh] shadow-[0_0_30px_#9DE3FF] flex flex-col justify-center">
           <form ref={form} onSubmit={sendEmail} className="space-y-8">
             {/* Name */}
             <div className="mb-6">
