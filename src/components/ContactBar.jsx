@@ -16,7 +16,7 @@ const ContactBar = () => {
 <div
   style={{
     background:
-      'linear-gradient(to right, rgba(191, 240, 152, 0.35), rgba(111, 214, 255, 0.35))',
+      'linear-gradient(to right, rgba(191, 240, 152, 0.65), rgba(111, 214, 255, 0.65))',
   }}
   className="lexend-peta-font h-full w-full flex items-center justify-center text-black text-xl relative overflow-hidden"
 >

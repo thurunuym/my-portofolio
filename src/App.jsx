@@ -8,6 +8,7 @@ import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import GameSection from "./components/GameSection";
 import LogoBar from "./components/LogoBar";
+import Footer from "./components/Footer";
 
 import "./app.css";
 import ContactUs from "./components/ContactUs";
@@ -32,6 +33,7 @@ function App() {
               <Projects/>
               <GameSection/>
               <ContactUs />
+              <Footer/>
               
                 
             </>
