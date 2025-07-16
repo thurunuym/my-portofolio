@@ -118,7 +118,7 @@ export default function HelicopterGame() {
 
   return (
     <div
-      className="w-2/3 border-2 border-gradient-to-r from-green-300 to-blue-500 rounded-md overflow-hidden cursor-pointer relative"
+      className="w-2/3 border-2 border-gradient-to-r from-green-300 to-blue-500 mx-auto rounded-md overflow-hidden cursor-pointer relative"
       style={{ height: `${gameHeight}px` }}
       onClick={handleClick}
     >
