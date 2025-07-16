@@ -4,6 +4,10 @@ import HelicopterGame from "./Helicopter";
 export default function GameSection() {
   const [isGameVisible, setIsGameVisible] = useState(false);
 
+  const handleCloseGame = () => {
+    setIsGameVisible(false); // Show the Play button again
+  };
+
   return (
     <div className="w-full flex flex-col items-center my-10 md:block hidden">
       {!isGameVisible ? (
@@ -17,7 +21,7 @@ export default function GameSection() {
           </button>
         </div>
       ) : (
-        <HelicopterGame />
+        <HelicopterGame onClose={handleCloseGame} />
       )}
     </div>
   );

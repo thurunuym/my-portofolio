@@ -120,12 +120,13 @@ h1 {
   font-family: 'inter', sans-serif;
   color: #A8F5D7;
   font-size: 1.1em;
+  line-height: 1.2; // reduced spacing
 }
 
 .timeline__blurb {
-  line-height: 1.5;
-  font-size: 0.7rem;
+  line-height: 1.4; // reduced from 1.5
+  font-size: 0.75rem; // slightly larger for readability
   font-family: 'inter', sans-serif;
   color: #A8F5D7;
-  margin: .5rem 0 0;
+  margin: 0.3rem 0 0;
 }
