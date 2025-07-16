@@ -9,6 +9,7 @@ import Projects from "./components/Projects";
 import GameSection from "./components/GameSection";
 import LogoBar from "./components/LogoBar";
 import Footer from "./components/Footer";
+import "./App.css";
 
 import ContactUs from "./components/ContactUs";
 
