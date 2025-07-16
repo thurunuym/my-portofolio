@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
+import GameSection from "./GameSection";
 
 export default function HelicopterGame() {
   const gameHeight = 350; // px
-  const gravity = 0.5;
-  const lift = -8;
-  const gameSpeed = 20; // ms
+  const gravity = 0.3;     // Easier gravity
+  const lift = -6;         // Easier lift
+  const gameSpeed = 20;    // ms
   const obstacleSpeed = 2;
   const obstacleWidth = 20;
+  const obstacleGap = 180; // ⬅️ Increased gap
 
   const [position, setPosition] = useState(30);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -15,6 +17,7 @@ export default function HelicopterGame() {
   const [countdown, setCountdown] = useState(3);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [timer, setTimer] = useState(0);
+  const [isClosed, setIsClosed] = useState(false);
 
   const velocityRef = useRef(0);
   const gameInterval = useRef(null);
@@ -47,10 +50,7 @@ export default function HelicopterGame() {
 
         // Collision with ground or ceiling
         if (newPos <= 0 || newPos >= gameHeight - 20) {
-          clearInterval(gameInterval.current);
-          clearInterval(obstacleInterval.current);
-          clearInterval(timerInterval.current);
-          setIsGameOver(true);
+          stopGame();
           return p;
         }
 
@@ -65,47 +65,45 @@ export default function HelicopterGame() {
       );
     }, gameSpeed);
 
-    // Start obstacle generation
+    // Start obstacle generation (less frequent)
     obstacleInterval.current = setInterval(() => {
-      const randomHeight = Math.floor(Math.random() * (gameHeight - 100)) + 20;
+      const randomHeight = Math.floor(Math.random() * (gameHeight - obstacleGap - 50)) + 20;
       setObstacles((obs) => [...obs, { x: 600, height: randomHeight }]);
-    }, 2000);
+    }, 2500);
 
     // Start timer
     timerInterval.current = setInterval(() => {
       setTimer((t) => t + 1);
     }, 1000);
 
-    return () => {
-      clearInterval(gameInterval.current);
-      clearInterval(obstacleInterval.current);
-      clearInterval(timerInterval.current);
-    };
+    return () => stopGame();
   }, [isGameOver, isGameStarted]);
 
-  // Check for collision with obstacles
+  // Check for collisions
   useEffect(() => {
     obstacles.forEach((obstacle) => {
       if (
-        obstacle.x < 60 && // Helicopter X position + width
-        obstacle.x + obstacleWidth > 40 && // Helicopter X position
-        (position < obstacle.height || position + 20 > obstacle.height + 100) // Helicopter Y position and gap
+        obstacle.x < 60 &&
+        obstacle.x + obstacleWidth > 40 &&
+        (position < obstacle.height || position + 20 > obstacle.height + obstacleGap)
       ) {
-        clearInterval(gameInterval.current);
-        clearInterval(obstacleInterval.current);
-        clearInterval(timerInterval.current);
-        setIsGameOver(true);
+        stopGame();
       }
     });
   }, [obstacles, position]);
 
-  // Click to lift
+  const stopGame = () => {
+    clearInterval(gameInterval.current);
+    clearInterval(obstacleInterval.current);
+    clearInterval(timerInterval.current);
+    setIsGameOver(true);
+  };
+
   const handleClick = () => {
     if (isGameOver || !isGameStarted) return;
     velocityRef.current = lift;
   };
 
-  // Reset the game
   const resetGame = () => {
     setPosition(30);
     velocityRef.current = 0;
@@ -114,7 +112,16 @@ export default function HelicopterGame() {
     setCountdown(3);
     setIsGameStarted(false);
     setTimer(0);
+    setIsClosed(false);
   };
+
+  const handleClose = () => {
+    resetGame();
+    setIsClosed(true); // Optional if you want a fade-out effect or delay
+    if (onClose) onClose(); // ✅ Notify parent to hide the game
+  };
+
+  if (isClosed) return null;
 
   return (
     <div
@@ -122,6 +129,17 @@ export default function HelicopterGame() {
       style={{ height: `${gameHeight}px` }}
       onClick={handleClick}
     >
+      {/* Close Button */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleClose(); // ✅ Close the game and notify parent
+        }}
+        className="absolute top-2 left-2 text-white text-xl z-20 bg-black hover:bg-red-700 px-2 rounded"
+      >
+        ✕
+      </button>
+
       {/* Timer */}
       {isGameStarted && !isGameOver && (
         <div className="absolute top-2 right-4 text-white font-bold text-lg z-10">
@@ -136,7 +154,7 @@ export default function HelicopterGame() {
         </div>
       )}
 
-      {/* Game area */}
+      {/* Game Area */}
       <div className="relative w-full h-full bg-black">
         {/* Helicopter */}
         <div
@@ -147,7 +165,7 @@ export default function HelicopterGame() {
         {/* Obstacles */}
         {obstacles.map((obstacle, index) => (
           <React.Fragment key={index}>
-            {/* Top obstacle */}
+            {/* Top */}
             <div
               className="absolute bg-red-500"
               style={{
@@ -157,26 +175,29 @@ export default function HelicopterGame() {
                 top: `0px`,
               }}
             ></div>
-            {/* Bottom obstacle */}
+            {/* Bottom */}
             <div
               className="absolute bg-red-500"
               style={{
                 width: `${obstacleWidth}px`,
-                height: `${gameHeight - obstacle.height }px`,
+                height: `${gameHeight - (obstacle.height + obstacleGap)}px`,
                 left: `${obstacle.x}px`,
-                top: `${obstacle.height + 150}px`,
+                top: `${obstacle.height + obstacleGap}px`,
               }}
             ></div>
           </React.Fragment>
         ))}
 
-        {/* Game Over */}
+        {/* Game Over Message */}
         {isGameOver && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-white font-bold text-lg">
-            Game Over
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 text-white font-bold text-lg space-y-4">
+            <span>Game Over</span>
             <button
-              onClick={resetGame}
-              className="ml-4 px-3 py-1 bg-white text-black rounded hover:scale-105 transition"
+              onClick={(e) => {
+                e.stopPropagation();
+                resetGame();
+              }}
+              className="px-4 py-2 bg-white text-black rounded hover:scale-105 transition"
             >
               Play Again
             </button>
