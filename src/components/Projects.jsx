@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Projects.module.css";
 import chatwhizImg from "../assets/chatwhiz.png";
+import signImg from "../assets/sign.webp";
+import hardwareImg from "../assets/hardware.webp";
+import ecommerceImg from "../assets/ecommerceImg.jpg";
+import lmsImg from "../assets/lmsImg.png";
 import githubIcon from "../assets/icons/github.svg";
 import linkIcon from "../assets/icons/link.svg";
 import videoIcon from "../assets/icons/video.svg";
 import chatwhizVideo from "../assets/videos/chatwhiz.mp4";
+import signVideo from "../assets/videos/signVideo.mp4";
+import hardwareVideo from "../assets/videos/hardwareVideo.mp4";
 
 const projects = [
   {
@@ -17,31 +23,38 @@ const projects = [
     video: chatwhizVideo,
   },
   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: chatwhizImg,
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: chatwhizVideo,
+    name: "Sign Language-Detector",
+    description: "A real-time sign language detector.",
+    image: signImg,
+    technologies: ["Python", "YOLOv8.js", "flask"],
+    github: "https://github.com/thurunuym/sign-language-detector",
+    live: "",
+    video: signVideo,
   },
   {
-    name: "Chatwhiz",
+    name: "Hardware Store Management System",
     description: "A real-time chat application built for seamless chatting.",
-    image: chatwhizImg,
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: chatwhizVideo,
+    image: hardwareImg,
+    technologies: ["C#", ".Net"],
+    github: "https://github.com/thurunuym/HardwareManagement",
+    live: "",
+    video: hardwareVideo,
   },
   {
-    name: "Chatwhiz",
-    description: "A real-time chat application built for seamless chatting.",
-    image: chatwhizImg,
-    technologies: ["React", "Node.js", "Socket.io"],
-    github: "https://github.com/thurunuym/ChatWhiz",
-    live: "https://chatwhiz-kpvi.onrender.com/",
-    video: chatwhizVideo,
+    name: "SHILPA ",
+    description: "A fully functional Learning Management System.",
+    image: ecommerceImg,
+    technologies: ["React", "Spring Boot", "MongoDB"],
+    github:"https://github.com/ThusalDilhara/LMS-frontend"
+    
+  },
+    {
+    name: "E-Commerce Platform ",
+    description: "A fully functional E-Commerce platform for spors item shop",
+    image: lmsImg,
+    technologies: ["React", "Spring Boot", "MySQL" , "Redis"],
+    github:"https://github.com/ShashithaU/SportsCente-Frontend"
+    
   }
 ];
 
