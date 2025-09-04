@@ -59,7 +59,7 @@ export default function Header() {
           <a
             key={item.label}
             href={item.href}
-            className={`font-semibold text-base outline-none transition-all duration-300
+            className={`lexend-peta-font font-semibold text-base outline-none transition-all duration-300
               ${styles["gradient-text-outline"]} 
               ${styles["hover-3d"]}
               ${

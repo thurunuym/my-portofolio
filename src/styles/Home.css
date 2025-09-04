@@ -232,3 +232,17 @@ h1 {
   font-weight: 400;
   font-style: italic;
 }
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.color-cycle {
+  background: linear-gradient(45deg, #BFF098, #6FD6FF, #BFF098);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
