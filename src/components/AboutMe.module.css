@@ -12,3 +12,16 @@
 .middleBox {
   background: linear-gradient(to right, rgba(191, 240, 152, 0.85), rgba(111, 214, 255, 0.85));
 }
+
+
+.gradient {
+  display: inline-block;
+  background-image: linear-gradient(90deg, #BFF098 0%, #6FD6FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 25px;
+  font-weight: 700; 
+  -webkit-font-smoothing: antialiased;
+}

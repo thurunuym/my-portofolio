@@ -35,7 +35,7 @@ const Home = () => {
             I'm&nbsp;
             <span
               
-              className="text-4xl md:text-7xl lg:text-9xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent select-none"
+              className="text-4xl md:text-7xl lg:text-9xl color-cycle select-none"
             >
               Thurunu,
             </span>

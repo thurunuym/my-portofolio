@@ -34,8 +34,10 @@ const services = [
 const Services = () => {
   return (
     <section id="services">
-      <div className="px-6 md:px-10 lg:px-28 py-12 justify-center items-center">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent text-center mb-12">
+      
+      <div className="service-cards px-6 md:px-10 lg:px-28 py-12 justify-center items-center">
+        
+        <h1 className="text-4xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent text-center mb-12 font-extrabold">
           Services
         </h1>
 
@@ -54,7 +56,6 @@ const Services = () => {
                 </h2>
                 <p className="text-gray-300 text-sm px-6 mb-3">{service.description}</p>
 
-                {/* Image container with 3D tilt and squares */}
                 <div className="relative hidden lg:block mt-4 rounded overflow-hidden">
                   <img
                     src={service.img}
@@ -62,25 +63,9 @@ const Services = () => {
                     className="w-full h-[100px] object-cover tilt-img"
                   />
 
-                  {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-b from-[#6FD6FF] to-[#BFF098] opacity-40 pointer-events-none" />
 
-                  {/* Random squares overlay */}
-                  <div className="absolute inset-0 z-10 pointer-events-none squares-container group-hover:opacity-0 transition-opacity duration-500">
-                    {[...Array(7)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="floating-square"
-                        style={{
-                          width: `${8 + Math.random() * 10}px`,
-                          height: `${8 + Math.random() * 10}px`,
-                          top: `${Math.random() * 80}%`,
-                          left: `${Math.random() * 90}%`,
-                          animationDelay: `${Math.random() * 2}s`,
-                        }}
-                      ></span>
-                    ))}
-                  </div>
+                  
                 </div>
               </div>
             </div>
