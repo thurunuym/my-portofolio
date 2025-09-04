@@ -1,0 +1,13 @@
+/* Tech Stack Icon Hover Effects */
+#tech-stack img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* show pointer on hover */
+  outline: none; /* remove default focus outline */
+  border: none;  /* remove any border */
+}
+
+#tech-stack img:hover {
+  transform: scale(1.2); /* slightly bigger */
+  box-shadow: 0 8px 20px rgba(191, 240, 152, 0.6),
+              0 8px 20px rgba(111, 214, 255, 0.6); /* subtle glow */
+}

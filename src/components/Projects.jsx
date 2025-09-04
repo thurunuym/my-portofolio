@@ -43,7 +43,7 @@ const projects = [
   {
     name: "SHILPA ",
     description: "A fully functional Learning Management System.",
-    image: ecommerceImg,
+    image: lmsImg,
     technologies: ["React", "Spring Boot", "MongoDB"],
     github:"https://github.com/ThusalDilhara/LMS-frontend"
     
@@ -51,7 +51,7 @@ const projects = [
     {
     name: "E-Commerce Platform ",
     description: "A fully functional E-Commerce platform for spors item shop",
-    image: lmsImg,
+    image: ecommerceImg,
     technologies: ["React", "Spring Boot", "MySQL" , "Redis"],
     github:"https://github.com/ShashithaU/SportsCente-Frontend"
     
@@ -79,22 +79,26 @@ const Projects = () => {
       <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent">
         Projects
       </h2>
+      
 
       <div className="flex flex-wrap justify-center gap-10">
         {projects.map((project, index) => (
           <div
-            key={index}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            className={`w-80 bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] opacity-30 hover:opacity-100 shadow-[0_0_20px_#9DE3FF] transition-all duration-300 rounded-xl p-4 cursor-pointer ${styles.floatingCard}`}
-            style={{
-              zIndex: hoveredIndex === index ? 10 : 1,
-              filter:
-                hoveredIndex === null || hoveredIndex === index
-                  ? "none"
-                  : "blur(2px) brightness(75%)",
-            }}
-          >
+  key={index}
+  onMouseEnter={() => setHoveredIndex(index)}
+  onMouseLeave={() => setHoveredIndex(null)}
+  className={`w-80 bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] shadow-[0_0_20px_#9DE3FF] transition-all duration-300 rounded-xl p-4 cursor-pointer ${styles.floatingCard}`}
+  style={{
+    zIndex: hoveredIndex === index ? 10 : 1,
+    opacity:
+      hoveredIndex === null || hoveredIndex === index ? 1 : 0.5, // FULL opacity initially
+    filter:
+      hoveredIndex === null || hoveredIndex === index
+        ? "none"
+        : "blur(2px) brightness(75%)",
+  }}
+>
+
             <img
               src={project.image}
               alt={project.name}
