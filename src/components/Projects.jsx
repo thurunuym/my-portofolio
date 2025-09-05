@@ -23,7 +23,7 @@ const projects = [
     video: chatwhizVideo,
   },
   {
-    name: "Sign Language-Detector",
+    name: "Sign Language Detector",
     description: "A real-time sign language detector.",
     image: signImg,
     technologies: ["Python", "YOLOv8", "Flask"],
@@ -50,7 +50,7 @@ const projects = [
   },
     {
     name: "E-Commerce Platform ",
-    description: "A fully functional E-Commerce platform for spors item shop",
+    description: "A fully functional E-Commerce platform for sports item shop",
     image: ecommerceImg,
     technologies: ["React", "Spring Boot", "MySQL" , "Redis"],
     github:"https://github.com/ShashithaU/SportsCente-Frontend"
