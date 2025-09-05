@@ -8,7 +8,7 @@ const Footer = () => {
         {/* 🔗 Social Icons */}
         <div className="flex space-x-6 text-xl">
           <a
-            href="https://www.instagram.com/yourhandle"
+            href="https://www.instagram.com/thurunu_ym/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#E1306C] transition-colors duration-300"
@@ -16,7 +16,7 @@ const Footer = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://www.facebook.com/yourhandle"
+            href="https://web.facebook.com/thurunu.marasinghe"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#3b5998] transition-colors duration-300"
@@ -24,7 +24,7 @@ const Footer = () => {
             <FaFacebookF />
           </a>
           <a
-            href="https://www.youtube.com/yourchannel"
+            href="https://www.youtube.com/@thurunuym8204"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#FF0000] transition-colors duration-300"
@@ -37,7 +37,7 @@ const Footer = () => {
         <div className="text-center text-sm leading-relaxed max-w-md">
           <p>© {new Date().getFullYear()} Thurunu YM. All rights reserved.</p>
           <p className="text-gray-400 mt-1 italic">
-            Designed with style, developed with bugs (hopefully fixed). Thanks for the cardio!
+            Designed with style, developed with bugs. Thank you for the visit!
           </p>
         </div>
       </div>

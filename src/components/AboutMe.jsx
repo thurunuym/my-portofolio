@@ -18,7 +18,7 @@ const AboutMe = () => {
               </h3> */}
 
                     
-              <p className="text-white text-m leading-relaxed text-m">
+              <p className="text-white text-m leading-relaxed text-m leading-loose">
                 I am an Electronics and Computer Science undergraduate at the
                 University of Kelaniya, passionate about combining technical
                 expertise with <span className={styles.gradient}>creative</span> problem-solving. Throughout my academic
