@@ -26,7 +26,7 @@ const projects = [
     name: "Sign Language-Detector",
     description: "A real-time sign language detector.",
     image: signImg,
-    technologies: ["Python", "YOLOv8.js", "flask"],
+    technologies: ["Python", "YOLOv8", "Flask"],
     github: "https://github.com/thurunuym/sign-language-detector",
     live: "",
     video: signVideo,
@@ -35,7 +35,7 @@ const projects = [
     name: "Hardware Store Management System",
     description: "A real-time chat application built for seamless chatting.",
     image: hardwareImg,
-    technologies: ["C#", ".Net"],
+    technologies: ["C#", ".NE"],
     github: "https://github.com/thurunuym/HardwareManagement",
     live: "",
     video: hardwareVideo,
@@ -63,16 +63,20 @@ const Projects = () => {
   const [videoModal, setVideoModal] = useState(null);
 
   const openVideo = (videoSrc) => setVideoModal(videoSrc);
-  const closeVideo = () => setVideoModal(null);
 
-  useEffect(() => {
-    if (!videoModal) {
-      const section = document.getElementById("projects");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+  const closeVideo = () => {
+  setVideoModal(null);
+
+  setTimeout(() => {
+    const section = document.getElementById("projects");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
-  }, [videoModal]);
+  }, 100); // tiny delay for smoother effect
+};
+
+
+  
 
   return (
     <section id="projects" className="py-20 px-8 md:px-20 relative">
