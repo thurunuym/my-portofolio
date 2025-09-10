@@ -37,7 +37,7 @@ const Services = () => {
       
       <div className="service-cards px-6 md:px-10 lg:px-28 py-12 justify-center items-center">
         
-        <h1 className="text-4xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent text-center mb-12 font-extrabold">
+        <h1 className="text-4xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent mx-auto text-center mb-12 font-extrabold">
           Services
         </h1>
 
