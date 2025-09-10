@@ -41,6 +41,9 @@ const AboutMe = () => {
             </div>
           </div>
 
+
+          
+
           {/* Right Box (Timeline) */}
           <div className={`${styles.box} ${styles.rightBox} flex-1 p-4 sm:p-6 rounded-[6px] shadow-md order-3`}>
             <div className="timeline w-full">
@@ -72,6 +75,9 @@ const AboutMe = () => {
               <h2 className="timeline__item timeline__item--year">2006</h2>
             </div>
           </div>
+
+
+
 
         </div>
       </div>
