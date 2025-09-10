@@ -149,10 +149,17 @@ export default function HelicopterGame() {
 
       {/* Countdown */}
       {!isGameStarted && !isGameOver && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-white font-bold text-5xl z-10">
-          {countdown}
-        </div>
-      )}
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 text-white z-10 space-y-4">
+    {/* Instruction */}
+    <span className="text-lg md:text-md font-semibold">
+      Click the left mouse button constantly to keep the ball in the air
+    </span>
+
+    {/* Countdown */}
+    <span className="text-5xl font-bold">
+      {countdown}
+    </span>
+  </div>)}
 
       {/* Game Area */}
       <div className="relative w-full h-full bg-black">
