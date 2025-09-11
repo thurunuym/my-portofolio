@@ -143,16 +143,17 @@ const Projects = () => {
                   />
                 </a>
               )}
-              {project.live && (
-                <a href={project.live} target="_blank" rel="noopener noreferrer">
-                  <img src={linkIcon} alt="Live Site" className="w-6 h-6" />
-                </a>
-              )}
               {project.video && (
                 <button onClick={() => openVideo(project.video)}>
                   <img src={videoIcon} alt="Demo Video" className="w-6 h-6" />
                 </button>
               )}
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noopener noreferrer">
+                  <img src={linkIcon} alt="Live Site" className="w-6 h-5 mt-2" />
+                </a>
+              )}
+              
             </div>
           </div>
         ))}
