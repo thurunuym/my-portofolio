@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";  
 import "../styles/TechStack.css"
 import htmlLogo from "../assets/html.webp";
 import cssLogo from "../assets/css.webp";
@@ -37,32 +38,46 @@ const TechStack = () => {
         </h2>
 
         {/* Centered Black Box with Gradient Border */}
-        <div
-          className="mx-auto py-12 border-2 rounded-lg"
-          style={{
-            borderImage: "linear-gradient(to right, #BFF098, #6FD6FF) 1",
-            borderImageSlice: 1,
-            background: "#000",
-          }}
-        >
+        <motion.div
+  className="mx-auto py-12 border-2 rounded-lg"
+  style={{
+    borderImage: "linear-gradient(to right, #BFF098, #6FD6FF) 1",
+    borderImageSlice: 1,
+    background: "#000",
+  }}
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.7 }}
+  viewport={{ once: true, amount: 0.2 }}
+>
           <div className="grid grid-cols-[150px_auto] items-center gap-y-8 lg:gap-y-16 max-w-4xl mx-auto px-2 lg:px-4 lg:ml-50.5">
             {Object.entries(techStacks).map(([section, logos]) => (
               <React.Fragment key={section}>
                 <h3 className="text-lg lg:text-2xl font-semibold text-white">{section}</h3>
                 <div className="flex flex-wrap gap-2 md:gap-4 lg:gap-6">
                   {logos.map((logo, index) => (
-                    <img
-                      key={index}
-                      src={logo}
-                      alt={`${section} logo ${index}`}
-                      className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full bg-white lg:p-2 object-contain"
-                    />
+                    <motion.img
+  key={index}
+  src={logo}
+  alt={`${section} logo ${index}`}
+  className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full bg-white lg:p-2 object-contain"
+  initial={{ opacity: 0, y: 40, rotate: -15, scale: 0.8 }}
+  whileInView={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+  transition={{
+    duration: 0.8,
+    delay: index * 0.1,
+    type: "spring",
+    stiffness: 120,
+  }}
+  viewport={{ once: true, amount: 0.3 }}
+/>
+
                   ))}
                 </div>
               </React.Fragment>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
