@@ -1,23 +1,23 @@
 import styles from "./AboutMe.module.css";
 import "../styles/AboutMe.scss";
 import thurunu from "../assets/thurunu1.gif";
+import { motion } from "motion/react";
 
 const AboutMe = () => {
   return (
     <section id="about" className="mt-2 py-20 min-h-screen">
-
-      
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 h-full">
         <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto h-full">
 
           {/* Left Box */}
-          <div className={`${styles.box} ${styles.leftBox} sm:order-2 lg:order-1 sm:flex flex-1 p-6 rounded-[6px] shadow-md`}>
+          <motion.div
+            className={`${styles.box} ${styles.leftBox} sm:order-2 lg:order-1 sm:flex flex-1 p-6 rounded-[6px] shadow-md`}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="flex flex-col items-center text-center ">
-              {/* <h3 className="text-2xl font-semibold bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent mb-4">
-                About Me
-              </h3> */}
-
-                    
               <p className="text-white text-m leading-relaxed text-m leading-loose">
                 I am an Electronics and Computer Science undergraduate at the
                 University of Kelaniya, passionate about combining technical
@@ -32,20 +32,29 @@ const AboutMe = () => {
                 enthusiasts, and industry professionals.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Middle Box */}
-          <div className={`${styles.box} ${styles.middleBox} sm:order-1 lg:order-2 flex-1 p-0 rounded-[6px] shadow-md`}>
+          <motion.div
+            className={`${styles.box} ${styles.middleBox} sm:order-1 lg:order-2 flex-1 p-0 rounded-[6px] shadow-md`}
+            initial={{ opacity: 0, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
+          >
             <div className="w-full">
               <img src={thurunu} alt="myimage" className="mt-20 w-full"/>
             </div>
-          </div>
-
-
-          
+          </motion.div>
 
           {/* Right Box (Timeline) */}
-          <div className={`${styles.box} ${styles.rightBox} flex-1 p-4 sm:p-6 rounded-[6px] shadow-md order-3`}>
+          <motion.div
+            className={`${styles.box} ${styles.rightBox} flex-1 p-4 sm:p-6 rounded-[6px] shadow-md order-3`}
+            initial={{ opacity: 0 , x:50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             <div className="timeline w-full">
               <h2 className="timeline__item timeline__item--year">Present</h2>
 
@@ -74,10 +83,7 @@ const AboutMe = () => {
 
               <h2 className="timeline__item timeline__item--year">2006</h2>
             </div>
-          </div>
-
-
-
+          </motion.div>
 
         </div>
       </div>

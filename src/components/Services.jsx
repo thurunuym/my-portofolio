@@ -1,9 +1,11 @@
 import React from "react";
+import { motion } from "motion/react";
 import fullStackImg from "../assets/services/full-stack.jpg";
 import graphicImg from "../assets/services/graphic.jpg";
 import mobileImg from "../assets/services/mobile-dev.png";
 import uiuxImg from "../assets/services/uiux.jpg";
-import "../styles/Services.css"; 
+import "../styles/Services.css";
+
 const services = [
   {
     title: "Full-Stack Web Applications",
@@ -34,17 +36,19 @@ const services = [
 const Services = () => {
   return (
     <section id="services">
-      
       <div className="service-cards px-6 md:px-10 lg:px-28 py-12 justify-center items-center">
-        
         <h1 className="text-4xl bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] bg-clip-text text-transparent mx-auto text-center mb-12 font-extrabold">
           Services
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:px-12">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 0 }}          // hidden before entering
+              whileInView={{ opacity: 1, y: 0 }}       // animate when in view
+              viewport={{ once: true, amount: 0 }}   // trigger once, 30% visible
+              transition={{ duration: 1, delay: index * 0.3 }}
               className="relative group p-[2px] rounded-md 
                 bg-gradient-to-br from-[#6FD6FF] to-[#BFF098]
                 group-hover:from-pink-400 group-hover:to-yellow-300 
@@ -62,13 +66,10 @@ const Services = () => {
                     alt={service.title}
                     className="w-full h-[100px] object-cover tilt-img"
                   />
-
                   <div className="absolute inset-0 bg-gradient-to-b from-[#6FD6FF] to-[#BFF098] opacity-40 pointer-events-none" />
-
-                  
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

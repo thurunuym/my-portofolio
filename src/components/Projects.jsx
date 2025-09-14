@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
+import { motion } from "motion/react";
+
 import styles from "./Projects.module.css";
 import chatwhizImg from "../assets/chatwhiz.png";
 import signImg from "../assets/sign.webp";
@@ -95,11 +97,19 @@ const Projects = () => {
       </h2>
       
 
-      <div className="flex flex-wrap justify-center gap-10">
+      <div 
+      
+      className="flex flex-wrap justify-center gap-10">
         {projects.map((project, index) => (
-          <div
-  key={index}
-  onMouseEnter={() => setHoveredIndex(index)}
+          <motion.div
+
+          initial={{ opacity: 0, y: 0 }}          // hidden before entering
+              whileInView={{ opacity: 1, y: 0 }}       // animate when in view
+              viewport={{ once: true, amount: 0 }}   // trigger once, 30% visible
+              transition={{ duration: 1, delay: index * 0.3 }}
+
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
   onMouseLeave={() => setHoveredIndex(null)}
   className={`w-80 bg-gradient-to-r from-[#BFF098] to-[#6FD6FF] shadow-[0_0_20px_#9DE3FF] transition-all duration-300 rounded-xl p-4 cursor-pointer ${styles.floatingCard}`}
   style={{
@@ -154,7 +164,7 @@ const Projects = () => {
                 </button>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
