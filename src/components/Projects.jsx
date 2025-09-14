@@ -106,7 +106,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: 0 }}          // hidden before entering
               whileInView={{ opacity: 1, y: 0 }}       // animate when in view
               viewport={{ once: true, amount: 0 }}   // trigger once, 30% visible
-              transition={{ duration: 1, delay: index * 0.3 }}
+              transition={{ duration: 1, delay: index * 0.2 }}
 
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
