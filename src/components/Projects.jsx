@@ -39,7 +39,7 @@ const projects = [
 
   {
     name: "Hardware Store Management System",
-    description: "A real-time chat application built for seamless chatting.",
+    description: "An application provides seemless management for hardware stores",
     image: hardwareImg,
     technologies: ["C#", ".NET"],
     github: "https://github.com/thurunuym/HardwareManagement",
