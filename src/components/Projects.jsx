@@ -39,7 +39,7 @@ const projects = [
 
   {
     name: "Hardware Store Management System",
-    description: "An application provides seemless management for hardware stores",
+    description: "An application provides seemless management for hardware stores.",
     image: hardwareImg,
     technologies: ["C#", ".NET"],
     github: "https://github.com/thurunuym/HardwareManagement",
@@ -57,7 +57,7 @@ const projects = [
   },
     {
     name: "Card Flipping Game ",
-    description: "A simple card flipping game deployed on AWS to explore AWS services",
+    description: "A simple card flipping game deployed on AWS to explore AWS services.",
     image: cardImg,
     technologies: ["AWS S3" , "CodePipeline" ,"HTML", "JavaScript" ],
     github:"https://github.com/thurunuym/card-flipping-game",
@@ -75,7 +75,7 @@ const projects = [
   },
     {
     name: "E-Commerce Platform ",
-    description: "A fully functional E-Commerce platform for sports item shop",
+    description: "A fully functional E-Commerce platform for sports item shop.",
     image: ecommerceImg,
     technologies: ["React", "Spring Boot", "MySQL" , "Redis"],
     github:"https://github.com/ShashithaU/SportsCente-Frontend",
