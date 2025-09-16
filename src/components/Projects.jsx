@@ -31,7 +31,7 @@ const projects = [
     name: "AI based Fitness Recommendation System",
     description: "An AI-driven fitness recommendation system using microservices architecture.",
     image: fitnessImg,
-    technologies: ["React", "SpringBoot", "Eureka","RabbitQM" ,"Keycloak","Gemini API","PostgreSQL"],
+    technologies: ["React", "SpringBoot", "Eureka","RabbitMQ" ,"Keycloak","Gemini API","PostgreSQL"],
     github: "https://github.com/thurunuym/fitness-recommendations-system",
     
   },
