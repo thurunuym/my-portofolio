@@ -16,6 +16,7 @@ import chatwhizVideo from "../assets/videos/chatwhiz.mp4";
 import signVideo from "../assets/videos/signVideo.mp4";
 import hardwareVideo from "../assets/videos/hardwareVideo.mp4";
 import cardImg from "../assets/cardGame.png"
+import fitnessImg from "../assets/fitness.webp";
 const projects = [
   {
     name: "Chatwhiz",
@@ -26,15 +27,16 @@ const projects = [
     live: "https://chatwhiz-kpvi.onrender.com/",
     video: chatwhizVideo,
   },
-  {
-    name: "Sign Language Detector",
-    description: "A real-time sign language detector.",
-    image: signImg,
-    technologies: ["Python", "YOLOv8", "Flask"],
-    github: "https://github.com/thurunuym/sign-language-detector",
-    live: "",
-    video: signVideo,
+     {
+    name: "AI based Fitness Recommendation System",
+    description: "An AI-driven fitness recommendation system using microservices architecture.",
+    image: fitnessImg,
+    technologies: ["React", "SpringBoot", "Eureka","RabbitQM" ,"Keycloak","Gemini API","PostgreSQL"],
+    github: "https://github.com/thurunuym/fitness-recommendations-system",
+    
   },
+
+
   {
     name: "Hardware Store Management System",
     description: "A real-time chat application built for seamless chatting.",
@@ -43,6 +45,25 @@ const projects = [
     github: "https://github.com/thurunuym/HardwareManagement",
     live: "",
     video: hardwareVideo,
+  },
+    {
+    name: "Sign Language Detector",
+    description: "A real-time sign language detector.",
+    image: signImg,
+    technologies: ["Python", "YOLOv8", "Flask"],
+    github: "https://github.com/thurunuym/sign-language-detector",
+    live: "",
+    video: signVideo,
+  },
+    {
+    name: "Card Flipping Game ",
+    description: "A simple card flipping game deployed on AWS to explore AWS services",
+    image: cardImg,
+    technologies: ["AWS S3" , "CodePipeline" ,"HTML", "JavaScript" ],
+    github:"https://github.com/thurunuym/card-flipping-game",
+    live: "http://meme-card-game-111.s3-website-ap-southeast-2.amazonaws.com/"
+
+  
   },
   {
     name: "SHILPA ",
@@ -59,17 +80,8 @@ const projects = [
     technologies: ["React", "Spring Boot", "MySQL" , "Redis"],
     github:"https://github.com/ShashithaU/SportsCente-Frontend",
     
-  },
-  {
-    name: "Card Flipping Game ",
-    description: "A simple card flipping game deployed on AWS to explore AWS services",
-    image: cardImg,
-    technologies: ["AWS S3" , "CodePipeline" ,"HTML", "JavaScript" ],
-    github:"https://github.com/thurunuym/card-flipping-game",
-    live: "http://meme-card-game-111.s3-website-ap-southeast-2.amazonaws.com/"
-
-    
   }
+
 ];
 
 const Projects = () => {
