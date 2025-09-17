@@ -22,8 +22,7 @@ const LogoBar = () => {
         </h3>
       </a>
     </div>
-  </div>
-</div>
+
 
 
         {/* CENTER - LOGO SCROLL (Always full width on mobile, center on lg) */}
