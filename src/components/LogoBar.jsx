@@ -6,22 +6,25 @@ import cv from "../assets/cv.pdf";
 
 const LogoBar = () => {
   return (
-    <div className="w-full bg-black">
-      {/* Main Flex Container: Column on mobile, Row on large */}
-      <div className="flex flex-col lg:flex-row w-full">
+<div className="w-full bg-black">
+  {/* Main Flex Container: Column on mobile, Row on large */}
+  <div className="flex flex-col lg:flex-row w-full">
+    {/* LEFT - CV (Large screen only) */}
+    <div className="hidden lg:flex lg:w-1/4 h-20 items-center justify-center">
+      <a
+        href={cv}                 
+        target="_blank"           // opens in new tab/window
+        rel="noopener noreferrer" // security best practice
+        className="cursor-pointer hover:bg-[#111111] transition-colors duration-300 h-full flex items-center justify-center w-full"
+      >
+        <h3 className="lexend-peta-font bg-gradient-to-t from-[#6FD6FF] to-[#BFF098] bg-clip-text text-transparent text-lg font-semibold text-center">
+          Download CV
+        </h3>
+      </a>
+    </div>
+  </div>
+</div>
 
-        {/* LEFT - CV (Large screen only) */}
-        <div className="hidden lg:flex lg:w-1/4 h-20 items-center justify-center">
-          <a
-            href={cv}
-            download
-            className="cursor-pointer hover:bg-[#111111] transition-colors duration-300 h-full flex items-center justify-center w-full"
-          >
-            <h3 className="lexend-peta-font bg-gradient-to-t from-[#6FD6FF] to-[#BFF098] bg-clip-text text-transparent text-lg font-semibold text-center">
-              Download CV
-            </h3>
-          </a>
-        </div>
 
         {/* CENTER - LOGO SCROLL (Always full width on mobile, center on lg) */}
         <div className="w-full lg:w-2/4 h-20 relative flex items-center justify-center overflow-hidden">
