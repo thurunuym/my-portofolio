@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaLinkedin, FaGithub, FaMedium } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaMedium ,FaBehance } from 'react-icons/fa';
 import '../styles/ContactBar.css'; 
 
 const ContactBar = () => {
@@ -40,6 +40,9 @@ const ContactBar = () => {
     </a>
     <a href="https://github.com/thurunuym" target="_blank" rel="noreferrer">
       <FaGithub />
+    </a>
+    <a href="https://www.behance.net/thurunumarasin" target="_blank" rel="noreferrer">
+      <FaBehance />
     </a>
     <a href="https://medium.com" target="_blank" rel="noreferrer">
       <FaMedium />
