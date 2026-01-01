@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaLinkedin, FaGithub, FaMedium } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaMedium ,FaBehance } from 'react-icons/fa';
 import '../styles/ContactBar.css'; 
 
 const ContactBar = () => {
