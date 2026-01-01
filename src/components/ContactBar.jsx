@@ -41,6 +41,9 @@ const ContactBar = () => {
     <a href="https://github.com/thurunuym" target="_blank" rel="noreferrer">
       <FaGithub />
     </a>
+    <a href="https://www.behance.net/thurunumarasin" target="_blank" rel="noreferrer">
+      <FaBehance />
+    </a>
     <a href="https://medium.com" target="_blank" rel="noreferrer">
       <FaMedium />
     </a>
