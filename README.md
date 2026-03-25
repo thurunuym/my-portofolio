@@ -1,28 +1,20 @@
-# My Personal Portfolio Website
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-## About
-This is my personal portfolio website, built using **React**, **Vite**, **Tailwind CSS**, and **SCSS**.  
-It showcases my projects, skills, and experience in a modern, responsive, and visually appealing layout.
+# Run and deploy your AI Studio app
 
+This contains everything you need to run your app locally.
 
+View your app in AI Studio: https://ai.studio/apps/675a10f7-be64-4f00-a70e-f7ba16f52155
 
-## Technologies Used
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-06B6D4?logo=tailwind-css&logoColor=white)
-![SCSS](https://img.shields.io/badge/SCSS-CC6699?logo=sass&logoColor=white)
+## Run Locally
 
-
-
-## Live Demo
-  🔗 [thurunuym.website](https://www.thurunuym.website/)
+**Prerequisites:**  Node.js
 
 
-
-## Features
-- Fully responsive design  
-- Smooth scrolling and animations  
-- Project showcase with links to GitHub repositories  
-- Contact form with EmailJS 
-
-
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
