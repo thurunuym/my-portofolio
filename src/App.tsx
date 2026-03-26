@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect } from "react";
 import { Wormhole } from "./components/Wormhole";
 import { Section } from "./components/Section";
+import { Splash } from "./components/Splash";
 import { Hero } from "./components/Hero";
 import { Introduction } from "./components/Introduction";
 import { Education } from "./components/Education";
@@ -30,6 +31,9 @@ export default function App() {
 
   return (
     <main className="relative bg-black min-h-[1600vh] overflow-x-hidden">
+      {/* Splash Screen */}
+      <Splash />
+
       {/* 3D Background Layer */}
       <div className="fixed inset-0 z-0">
         <Canvas shadows gl={{ antialias: true }}>

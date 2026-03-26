@@ -160,7 +160,7 @@ export function TechGlobe() {
         <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={45} />
         
         {/* Starfield for more liveness */}
-        <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+        <Stars radius={100} depth={50} count={2300} factor={4} saturation={0} fade speed={1} />
 
         {/* Cinematic Lighting */}
         <ambientLight intensity={0.4} />

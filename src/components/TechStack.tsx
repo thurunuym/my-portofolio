@@ -6,13 +6,13 @@ export function TechStack() {
   return (
     <div className="space-y-12">
       <div className="text-center space-y-2">
-        <h2 className="text-4xl font-black text-white uppercase tracking-widest">Sector 3: Systems</h2>
-        <p className="text-blue-400 font-mono text-sm tracking-widest uppercase">3D Spaceship Tech Stack</p>
+        <h2 className="text-4xl font-black text-white uppercase tracking-widest">Spaceship</h2>
+        <p className="text-blue-400 font-mono text-sm tracking-widest uppercase">Tech Stack</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Main Stack 3D Globe */}
-        <div className="relative aspect-square max-w-md mx-auto perspective-1000 overflow-visible">
+        <div className="relative mx-auto" style={{width: "450px", height: "450px"}}>
           <TechGlobe />
         </div>
 
