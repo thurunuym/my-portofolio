@@ -5,65 +5,51 @@ interface SectionProps {
   children: ReactNode;
   index: number;
   total: number;
+  isStatic?: boolean; // 📌 Added this prop
 }
 
-export function Section({ children, index, total }: SectionProps) {
+export function Section({ children, index, total, isStatic = false }: SectionProps) {
   const { scrollYProgress } = useScroll();
 
-  // 📌 Each section gets its own scroll range
   const start = index / total;
   const end = (index + 1) / total;
-
-  // 📌 Extend range slightly for smoother transitions
   const startTrigger = Math.max(0, start - 0.08);
   const endTrigger = Math.min(1, end + 0.08);
 
-  // 📌 Create adaptive fade points (prevents overlap issues)
   const fadeInEnd = start + (end - start) * 0.2;
   const fadeOutStart = start + (end - start) * 0.75;
 
-  // 🎯 OPACITY (clean fade in → hold → fade out)
+  // Opacity always applies
   const opacityRaw = useTransform(
     scrollYProgress,
     [startTrigger, fadeInEnd, fadeOutStart, endTrigger],
     [0, 1, 0, 0]
   );
+  const opacity = useSpring(opacityRaw, { stiffness: 100, damping: 25 });
 
-  const opacity = useSpring(opacityRaw, {
-    stiffness: 100,
-    damping: 25,
-  });
-
-  // 🎯 SCALE (slower, smoother zoom — no aggressive jump)
+  // Scale and Y only apply if isStatic is false
   const scaleRaw = useTransform(
     scrollYProgress,
     [startTrigger, fadeInEnd, endTrigger],
-    [0.1, 1.2, 1.5]
+    isStatic ? [1, 1, 1] : [0.1, 1.2, 1.5]
   );
+  const scale = useSpring(scaleRaw, { stiffness: 20, damping: 5 });
 
-  const scale = useSpring(scaleRaw, {
-    stiffness: 20,   // lower = slower zoom
-    damping: 5,     // higher = smoother
-  });
-
-  // 🎯 Y MOVEMENT (gentle cinematic motion)
   const yRaw = useTransform(
     scrollYProgress,
     [startTrigger, fadeInEnd, endTrigger],
-    [30, 0, -30]
+    isStatic ? [0, 0, 0] : [30, 0, -30]
   );
-
-  const y = useSpring(yRaw, {
-    stiffness: 70,
-    damping: 25,
-  });
+  const y = useSpring(yRaw, { stiffness: 70, damping: 25 });
 
   return (
     <motion.section
       style={{ opacity, scale, y }}
-      className="fixed inset-0 flex items-center justify-center pointer-events-none"
+      className={`fixed inset-0 flex items-center justify-center pointer-events-none ${
+        isStatic ? "z-0" : "" // Ensure static sections sit properly in the background
+      }`}
     >
-      <div className="pointer-events-auto w-full max-w-4xl px-6">
+      <div className="pointer-events-auto w-full max-w-4xl px-6 h-full flex flex-col justify-center">
         {children}
       </div>
     </motion.section>

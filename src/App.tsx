@@ -73,7 +73,7 @@ export default function App() {
           <Contact />
         </Section>
 
-        <Section index={7} total={TOTAL_SECTIONS}>
+        <Section index={7} total={TOTAL_SECTIONS} isStatic={true}>
           <Outro />
         </Section>
       </div>
