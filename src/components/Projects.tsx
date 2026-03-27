@@ -189,14 +189,11 @@ export function Projects() {
 
           {/* Camera controls for orbital feel */}
           <OrbitControls
-            enablePan={false} // User stays centered on Earth
-            enableZoom={true}
-            minDistance={10}
-            maxDistance={50}
-            autoRotate={true} // Subtly rotates the view
-            autoRotateSpeed={0.3}
-            dampingFactor={0.1}
-          />
+  enablePan={false}
+  enableZoom={false} // 🔥 disable scroll hijack
+  autoRotate={true}
+  autoRotateSpeed={0.3}
+/>
         </Canvas>
       </div>
 
@@ -207,12 +204,12 @@ export function Projects() {
             Planet Space
           </h2>
           <p className="text-cyan-400 font-mono text-sm tracking-widest uppercase bg-black/30 inline-block px-4 py-1 rounded-full border border-cyan-900/50">
-            Deployed Modules // Projects
+            Deployed Projects
           </p>
         </div>
 
         <div className="text-center text-gray-500 font-mono text-xs animate-pulse bg-black/50 inline-block px-6 py-2 rounded-full border border-gray-800 self-center">
-          Rotate view to explore orbital elements // Drag or use controls
+          Rotate view to explore orbital elements 
         </div>
       </div>
 
