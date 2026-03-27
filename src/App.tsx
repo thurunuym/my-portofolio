@@ -65,7 +65,7 @@ export default function App() {
           <TechStack />
         </Section>
 
-        <Section index={5} total={TOTAL_SECTIONS}>
+        <Section index={5} total={TOTAL_SECTIONS} isStatic={true} fullBleed={true}>
           <Projects />
         </Section>
 

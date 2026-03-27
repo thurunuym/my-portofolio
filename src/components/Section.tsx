@@ -2,8 +2,8 @@ import {
   motion,
   useMotionValueEvent,
   useScroll,
-  useTransform,
   useSpring,
+  useTransform,
 } from "motion/react";
 import { ReactNode, useState } from "react";
 
@@ -11,10 +11,17 @@ interface SectionProps {
   children: ReactNode;
   index: number;
   total: number;
-  isStatic?: boolean; // 📌 Added this prop
+  isStatic?: boolean;
+  fullBleed?: boolean;
 }
 
-export function Section({ children, index, total, isStatic = false }: SectionProps) {
+export function Section({
+  children,
+  index,
+  total,
+  isStatic = false,
+  fullBleed = false,
+}: SectionProps) {
   const { scrollYProgress } = useScroll();
   const [isInteractive, setIsInteractive] = useState(index === 0);
 
@@ -26,7 +33,6 @@ export function Section({ children, index, total, isStatic = false }: SectionPro
   const fadeInEnd = start + (end - start) * 0.2;
   const fadeOutStart = start + (end - start) * 0.75;
 
-  // Opacity always applies
   const opacityRaw = useTransform(
     scrollYProgress,
     [startTrigger, fadeInEnd, fadeOutStart, endTrigger],
@@ -34,7 +40,6 @@ export function Section({ children, index, total, isStatic = false }: SectionPro
   );
   const opacity = useSpring(opacityRaw, { stiffness: 100, damping: 25 });
 
-  // Scale and Y only apply if isStatic is false
   const scaleRaw = useTransform(
     scrollYProgress,
     [startTrigger, fadeInEnd, endTrigger],
@@ -49,7 +54,6 @@ export function Section({ children, index, total, isStatic = false }: SectionPro
   );
   const y = useSpring(yRaw, { stiffness: 70, damping: 25 });
 
-  // Only the section currently in view should receive pointer interactions.
   const interactionWindow = useTransform(
     scrollYProgress,
     [startTrigger, fadeInEnd, fadeOutStart, endTrigger],
@@ -67,7 +71,11 @@ export function Section({ children, index, total, isStatic = false }: SectionPro
         isInteractive ? "pointer-events-auto z-20" : "pointer-events-none z-0"
       }`}
     >
-      <div className="w-full max-w-4xl px-6 h-full flex flex-col justify-center">
+      <div
+        className={`w-full h-full flex flex-col justify-center ${
+          fullBleed ? "max-w-none px-0" : "max-w-4xl px-6"
+        }`}
+      >
         {children}
       </div>
     </motion.section>
