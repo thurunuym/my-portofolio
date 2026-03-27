@@ -79,11 +79,11 @@ export function Hero() {
           
         </div>
       </motion.div>
-      <motion.div
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
-                className="fixed left-1/2 -translate-x-1/2  flex flex-col items-center gap-2 cursor-pointer pointer-events-none"
+                className="fixed left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
                 onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
               >
                 <Mouse className="w-6 h-6 text-blue-400 animate-bounce" />

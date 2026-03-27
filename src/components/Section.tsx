@@ -1,5 +1,11 @@
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
-import { ReactNode } from "react";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+  useSpring,
+} from "motion/react";
+import { ReactNode, useState } from "react";
 
 interface SectionProps {
   children: ReactNode;
@@ -10,6 +16,7 @@ interface SectionProps {
 
 export function Section({ children, index, total, isStatic = false }: SectionProps) {
   const { scrollYProgress } = useScroll();
+  const [isInteractive, setIsInteractive] = useState(index === 0);
 
   const start = index / total;
   const end = (index + 1) / total;
@@ -42,14 +49,25 @@ export function Section({ children, index, total, isStatic = false }: SectionPro
   );
   const y = useSpring(yRaw, { stiffness: 70, damping: 25 });
 
+  // Only the section currently in view should receive pointer interactions.
+  const interactionWindow = useTransform(
+    scrollYProgress,
+    [startTrigger, fadeInEnd, fadeOutStart, endTrigger],
+    [0, 1, 1, 0]
+  );
+
+  useMotionValueEvent(interactionWindow, "change", (latest) => {
+    setIsInteractive(latest > 0.15);
+  });
+
   return (
     <motion.section
       style={{ opacity, scale, y }}
-      className={`fixed inset-0 flex items-center justify-center pointer-events-none ${
-        isStatic ? "z-0" : "" // Ensure static sections sit properly in the background
+      className={`fixed inset-0 flex items-center justify-center ${
+        isInteractive ? "pointer-events-auto z-20" : "pointer-events-none z-0"
       }`}
     >
-      <div className="pointer-events-auto w-full max-w-4xl px-6 h-full flex flex-col justify-center">
+      <div className="w-full max-w-4xl px-6 h-full flex flex-col justify-center">
         {children}
       </div>
     </motion.section>
