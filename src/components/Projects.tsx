@@ -1,17 +1,16 @@
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "motion/react";
 import { PROJECTS } from "../constants";
 import { Github, ExternalLink, Play, X } from "lucide-react";
-import { useState, useRef, useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars, Html } from "@react-three/drei";
+import { Html, OrbitControls, Stars } from "@react-three/drei";
 import * as THREE from "three";
 
 function Earth() {
-  const earthRef = useRef<THREE.Group>(null);
-  const cloudsRef = useRef<THREE.Group>(null);
+  const earthRef = useRef<THREE.Mesh>(null);
+  const cloudsRef = useRef<THREE.Mesh>(null);
 
-  // Slow rotation logic using useFrame
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (earthRef.current) {
       earthRef.current.rotation.y += delta * 0.05;
     }
@@ -22,12 +21,9 @@ function Earth() {
 
   return (
     <group>
-      {/* Sun Light (simulating distant sunlight) */}
       <directionalLight position={[-5, 3, 5]} intensity={1.2} color="#ffffff" />
-      {/* Ambient Light (soft light from space) */}
       <ambientLight intensity={0.1} />
 
-      {/* Earth Sphere - Simple gradient implementation */}
       <mesh ref={earthRef} scale={2.5}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial
@@ -39,12 +35,11 @@ function Earth() {
         />
       </mesh>
 
-      {/* Clouds Sphere (slightly larger, transparent) */}
       <mesh ref={cloudsRef} scale={2.51}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial
           color="#ffffff"
-          transparent={true}
+          transparent
           opacity={0.2}
           depthWrite={false}
           metalness={0}
@@ -52,12 +47,11 @@ function Earth() {
         />
       </mesh>
 
-      {/* Atmospheric Glow (simple halo) */}
       <mesh scale={2.6}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshBasicMaterial
           color="#a0d8f1"
-          transparent={true}
+          transparent
           opacity={0.15}
           side={THREE.BackSide}
           blending={THREE.AdditiveBlending}
@@ -67,28 +61,41 @@ function Earth() {
   );
 }
 
-function OrbitalProject({ project, index, totalProjects, onSelect }) {
-  // Calculate position in a large orbit around Earth
+interface OrbitalProjectProps {
+  index: number;
+  onSelect: () => void;
+  project: (typeof PROJECTS)[number];
+  totalProjects: number;
+}
+
+function OrbitalProject({
+  project,
+  index,
+  totalProjects,
+  onSelect,
+}: OrbitalProjectProps) {
   const orbitRadius = 15;
   const angle = (index / totalProjects) * Math.PI * 2;
-  const position = useMemo(() => {
-    return [
-      Math.cos(angle) * orbitRadius,
-      Math.sin(angle) * orbitRadius * 0.5, // Slightly elliptical
-      0, // Keeping them roughly on a plane for now
-    ];
-  }, [angle, orbitRadius]);
+  const position = useMemo(
+    () =>
+      [
+        Math.cos(angle) * orbitRadius,
+        Math.sin(angle) * orbitRadius * 0.5,
+        0,
+      ] as [number, number, number],
+    [angle]
+  );
 
   return (
     <Html
-      position={position as [number, number, number]}
-      distanceFactor={10} // Scales based on camera distance
-      transform // Allows CSS transforms
-      occlude // Simple occlusion by the Earth sphere
+      position={position}
+      distanceFactor={10}
+      transform
+      occlude
       style={{
         transition: "all 0.5s ease-out",
         opacity: 0,
-        transform: "translateZ(-50px) rotateY(20deg)", // Initial state
+        transform: "translateZ(-50px) rotateY(20deg)",
       }}
       className="orbital-project-wrapper"
     >
@@ -103,38 +110,41 @@ function OrbitalProject({ project, index, totalProjects, onSelect }) {
           }
         }}
       >
-        {/* Sci-Fi Style Project Card */}
-        <div className="p-6 bg-gray-950/90 border border-cyan-900/50 rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.15)] backdrop-blur-sm relative overflow-hidden group-hover:border-cyan-500/80 transition-all duration-300" style={{width: "280px"}}>
-          {/* Faux scanlines overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] pointer-events-none opacity-30" style={{backgroundSize: "100% 4px"}}></div>
+        <div
+          className="relative overflow-hidden rounded-2xl border border-cyan-900/50 bg-gray-950/80 p-6 shadow-[0_0_30px_rgba(6,182,212,0.15)] backdrop-blur-sm transition-all duration-300 group-hover:border-cyan-500/80"
+          style={{ width: "280px" }}
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-30 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)]"
+            style={{ backgroundSize: "100% 4px" }}
+          />
 
-          <div className="space-y-4 relative z-10">
-            {/* Project ID / Sci-Fi marker */}
+          <div className="relative z-10 space-y-4">
             <div className="flex items-center justify-between gap-3">
-              <span className="text-[10px] font-mono text-cyan-600 uppercase tracking-widest bg-cyan-950/50 px-3 py-1 rounded-full border border-cyan-900">
+              <span className="rounded-full border border-cyan-900 bg-cyan-950/50 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cyan-600">
                 Unit {index + 1}
               </span>
               <div
-                className="w-4 h-4 rounded-full shadow-[0_0_15px_currentColor]"
+                className="h-4 w-4 rounded-full shadow-[0_0_15px_currentColor]"
                 style={{ color: project.color }}
               />
             </div>
 
-            <h3 className="text-xl font-extrabold text-white uppercase tracking-tighter group-hover:text-cyan-400 transition-colors">
+            <h3 className="text-xl font-extrabold uppercase tracking-tighter text-white transition-colors group-hover:text-cyan-400">
               {project.name}
             </h3>
 
-            <p className="text-gray-400 text-xs font-mono leading-relaxed line-clamp-2">
+            <p className="line-clamp-2 text-xs font-mono leading-relaxed text-gray-400">
               {project.description}
             </p>
 
             <div className="flex flex-wrap gap-1.5 pt-1">
-              {project.tech.slice(0, 3).map((t) => (
+              {project.tech.slice(0, 3).map((tech) => (
                 <span
-                  key={t}
-                  className="text-[9px] font-mono text-cyan-500 uppercase tracking-wider bg-cyan-950/30 px-2 py-0.5 rounded"
+                  key={tech}
+                  className="rounded bg-cyan-950/30 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-cyan-500"
                 >
-                  {t}
+                  {tech}
                 </span>
               ))}
               {project.tech.length > 3 && (
@@ -145,9 +155,8 @@ function OrbitalProject({ project, index, totalProjects, onSelect }) {
             </div>
           </div>
 
-          {/* Animated corner highlights */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500/0 group-hover:border-cyan-500 transition-all duration-500"></div>
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500/0 group-hover:border-cyan-500 transition-all duration-500"></div>
+          <div className="absolute left-0 top-0 h-8 w-8 border-l-2 border-t-2 border-cyan-500/0 transition-all duration-500 group-hover:border-cyan-500" />
+          <div className="absolute bottom-0 right-0 h-8 w-8 border-b-2 border-r-2 border-cyan-500/0 transition-all duration-500 group-hover:border-cyan-500" />
         </div>
       </motion.div>
     </Html>
@@ -155,14 +164,22 @@ function OrbitalProject({ project, index, totalProjects, onSelect }) {
 }
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<(typeof PROJECTS)[number] | null>(null);
+  const { scrollYProgress } = useScroll();
+
+  const sceneBlend = useSpring(
+    useTransform(scrollYProgress, [0.57, 0.63, 0.72, 0.8], [0.35, 0.78, 1, 1]),
+    { stiffness: 80, damping: 20 }
+  );
+  const veilOpacity = useSpring(
+    useTransform(scrollYProgress, [0.57, 0.63, 0.72], [0.28, 0.12, 0.04]),
+    { stiffness: 80, damping: 20 }
+  );
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden font-sans">
-      {/* 3D Background Scene */}
-      <div className="absolute inset-0 z-0">
+    <div className="relative h-screen w-full overflow-hidden font-sans">
+      <motion.div className="absolute inset-0 z-0" style={{ opacity: sceneBlend }}>
         <Canvas camera={{ position: [0, 5, 30], fov: 60 }}>
-          {/* Deep Space Background */}
           <Stars
             radius={100}
             depth={50}
@@ -173,123 +190,126 @@ export function Projects() {
             speed={1}
           />
 
-          {/* The Realistic Earth */}
           <Earth />
 
-          {/* Floating Project Elements in Orbit */}
-          {PROJECTS.map((project, i) => (
+          {PROJECTS.map((project, index) => (
             <OrbitalProject
               key={project.name}
               project={project}
-              index={i}
+              index={index}
               totalProjects={PROJECTS.length}
               onSelect={() => setSelectedProject(project)}
             />
           ))}
 
-          {/* Camera controls for orbital feel */}
           <OrbitControls
-  enablePan={false}
-  enableZoom={false} // 🔥 disable scroll hijack
-  autoRotate={true}
-  autoRotateSpeed={0.3}
-/>
+            enablePan={false}
+            enableZoom={false}
+            autoRotate
+            autoRotateSpeed={0.3}
+          />
         </Canvas>
-      </div>
+      </motion.div>
 
-      {/* Overlay HTML Content (Titles, Instructions) */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-between p-12 pointer-events-none">
-        <div className="text-center space-y-2 relative pointer-events-auto">
-          <h2 className="text-5xl font-black text-white uppercase tracking-widest drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          opacity: veilOpacity,
+          background:
+            "radial-gradient(circle at center, rgba(6, 24, 44, 0.18) 0%, rgba(2, 6, 23, 0.45) 45%, rgba(1, 2, 8, 0.82) 100%)",
+        }}
+      />
+
+      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-12">
+        <div className="pointer-events-auto relative space-y-2 text-center">
+          <h2 className="text-5xl font-black uppercase tracking-widest text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
             Planet Space
           </h2>
-          <p className="text-cyan-400 font-mono text-sm tracking-widest uppercase bg-black/30 inline-block px-4 py-1 rounded-full border border-cyan-900/50">
+          <p className="inline-block rounded-full border border-cyan-900/50 bg-black/20 px-4 py-1 font-mono text-sm uppercase tracking-widest text-cyan-400 backdrop-blur-sm">
             Deployed Projects
           </p>
         </div>
 
-        <div className="text-center text-gray-500 font-mono text-xs animate-pulse bg-black/50 inline-block px-6 py-2 rounded-full border border-gray-800 self-center">
-          Rotate view to explore orbital elements 
+        <div className="self-center rounded-full border border-gray-800 bg-black/30 px-6 py-2 text-center font-mono text-xs text-gray-400 backdrop-blur-sm">
+          Rotate view to explore orbital elements
         </div>
       </div>
 
-      {/* Project Detail Modal (Remains the same structure) */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 flex items-center justify-center p-6 bg-black/85 backdrop-blur-xl pointer-events-auto"
-            style={{ zIndex: 100 }}
-            onClick={() => setSelectedProject(null)} // Close on background click
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-6 backdrop-blur-xl"
+            onClick={() => setSelectedProject(null)}
           >
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="w-full max-w-3xl bg-gray-950 border-2 border-cyan-900 rounded-3xl overflow-hidden relative shadow-[0_0_60px_rgba(6,182,212,0.2)]"
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+              className="relative w-full max-w-3xl overflow-hidden rounded-3xl border-2 border-cyan-900 bg-gray-950 shadow-[0_0_60px_rgba(6,182,212,0.2)]"
+              onClick={(event) => event.stopPropagation()}
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 p-2 bg-gray-900/80 rounded-full hover:bg-cyan-950 transition-all text-white z-20 border border-cyan-800"
+                className="absolute right-6 top-6 z-20 rounded-full border border-cyan-800 bg-gray-900/80 p-2 text-white transition-all hover:bg-cyan-950"
               >
-                <X className="w-6 h-6" />
+                <X className="h-6 w-6" />
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-5 h-full">
-                {/* Visual side (using the old gradient style for consistency inside modal) */}
+              <div className="grid h-full grid-cols-1 md:grid-cols-5">
                 <div
-                  className="h-48 md:h-auto md:col-span-2 flex items-center justify-center relative overflow-hidden p-8 border-b md:border-b-0 md:border-r border-cyan-900"
+                  className="relative flex h-48 items-center justify-center overflow-hidden border-b border-cyan-900 p-8 md:col-span-2 md:h-auto md:border-b-0 md:border-r"
                   style={{
                     background: `radial-gradient(circle at center, ${selectedProject.color}15, #000 70%)`,
                   }}
                 >
                   <div
-                    className="w-40 h-40 rounded-full relative z-10 shadow-[inset_-15px_-15px_40px_rgba(0,0,0,0.6)]"
+                    className="relative z-10 h-40 w-40 rounded-full shadow-[inset_-15px_-15px_40px_rgba(0,0,0,0.6)]"
                     style={{
                       background: `radial-gradient(circle at 30% 30%, ${selectedProject.color}, #000)`,
                       boxShadow: `0 0 50px ${selectedProject.color}66`,
                     }}
                   />
-                  {/* Subtle sci-fi grid overlay inside visual area */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)]" style={{backgroundSize: "20px 20px"}}></div>
+                  <div
+                    className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)]"
+                    style={{ backgroundSize: "20px 20px" }}
+                  />
                 </div>
 
-                {/* Content side */}
-                <div className="p-10 md:col-span-3 space-y-8 h-full flex flex-col justify-between">
+                <div className="flex h-full flex-col justify-between space-y-8 p-10 md:col-span-3">
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-4xl font-extrabold text-white uppercase tracking-tighter leading-none">
+                      <h3 className="text-4xl font-extrabold uppercase leading-none tracking-tighter text-white">
                         {selectedProject.name}
                       </h3>
                       <div className="flex flex-wrap gap-2.5 pt-1">
-                        {selectedProject.tech.map((t) => (
+                        {selectedProject.tech.map((tech) => (
                           <span
-                            key={t}
-                            className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest bg-cyan-950 px-3 py-1 rounded-full border border-cyan-900"
+                            key={tech}
+                            className="rounded-full border border-cyan-900 bg-cyan-950 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cyan-400"
                           >
-                            #{t}
+                            #{tech}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    <p className="text-gray-300 text-sm leading-relaxed font-mono bg-gray-900/50 p-5 rounded-xl border border-gray-800">
+                    <p className="rounded-xl border border-gray-800 bg-gray-900/50 p-5 font-mono text-sm leading-relaxed text-gray-300">
                       {selectedProject.description}
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-800">
+                  <div className="flex flex-wrap gap-4 border-t border-gray-800 pt-4">
                     {selectedProject.links.github && (
                       <a
                         href={selectedProject.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 px-5 py-2.5 bg-gray-900 border border-gray-800 rounded-xl text-xs font-mono text-white hover:bg-gray-800 hover:border-gray-700 transition-all"
+                        className="flex items-center gap-2.5 rounded-xl border border-gray-800 bg-gray-900 px-5 py-2.5 font-mono text-xs text-white transition-all hover:border-gray-700 hover:bg-gray-800"
                       >
-                        <Github className="w-4 h-4 text-gray-400" /> SOURCE_CODE
+                        <Github className="h-4 w-4 text-gray-400" /> SOURCE_CODE
                       </a>
                     )}
                     {selectedProject.links.live && (
@@ -297,9 +317,9 @@ export function Projects() {
                         href={selectedProject.links.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 px-5 py-2.5 bg-cyan-950 border border-cyan-900 rounded-xl text-xs font-mono text-cyan-300 hover:bg-cyan-900 hover:border-cyan-800 transition-all shadow-[0_0_15px_rgba(6,182,212,0.2)]"
+                        className="flex items-center gap-2.5 rounded-xl border border-cyan-900 bg-cyan-950 px-5 py-2.5 font-mono text-xs text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.2)] transition-all hover:border-cyan-800 hover:bg-cyan-900"
                       >
-                        <ExternalLink className="w-4 h-4" /> LIVE_DEPLOYMENT
+                        <ExternalLink className="h-4 w-4" /> LIVE_DEPLOYMENT
                       </a>
                     )}
                     {selectedProject.links.video && (
@@ -307,9 +327,9 @@ export function Projects() {
                         href={selectedProject.links.video}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 px-5 py-2.5 bg-purple-950 border border-purple-900 rounded-xl text-xs font-mono text-purple-300 hover:bg-purple-900 hover:border-purple-800 transition-all"
+                        className="flex items-center gap-2.5 rounded-xl border border-purple-900 bg-purple-950 px-5 py-2.5 font-mono text-xs text-purple-300 transition-all hover:border-purple-800 hover:bg-purple-900"
                       >
-                        <Play className="w-4 h-4" /> SYSTEM_DEMO
+                        <Play className="h-4 w-4" /> SYSTEM_DEMO
                       </a>
                     )}
                   </div>
