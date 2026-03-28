@@ -91,11 +91,12 @@ function OrbitalProject({
       position={position}
       distanceFactor={10}
       transform
+      sprite
       occlude
       style={{
         transition: "all 0.5s ease-out",
         opacity: 0,
-        transform: "translateZ(-50px) rotateY(20deg)",
+        transform: "translate3d(0, 24px, -40px)",
       }}
       className="orbital-project-wrapper"
     >
@@ -106,7 +107,7 @@ function OrbitalProject({
         onViewportEnter={(entry) => {
           if (entry.target.parentElement) {
             entry.target.parentElement.style.opacity = "1";
-            entry.target.parentElement.style.transform = "translateZ(0) rotateY(0deg)";
+            entry.target.parentElement.style.transform = "translate3d(0, 0, 0)";
           }
         }}
       >
@@ -231,7 +232,7 @@ export function Projects() {
         </div>
 
         <div className="self-center rounded-full border border-gray-800 bg-black/30 px-6 py-2 text-center font-mono text-xs text-gray-400 backdrop-blur-sm">
-          Rotate view to explore orbital elements
+          Rotate and click to explore orbital elements
         </div>
       </div>
 
