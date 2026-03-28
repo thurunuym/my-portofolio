@@ -1,7 +1,8 @@
-import { motion } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Github, Mouse} from "lucide-react";
 import { SOCIAL_LINKS } from "../constants";
 import { FaBehance, FaMedium,FaLinkedin} from "react-icons/fa";
+import { useState } from "react";
 
 const iconMap = {
   Github: Github,
@@ -11,6 +12,15 @@ const iconMap = {
 };
 
 export function Hero() {
+  const { scrollY } = useScroll();
+  const [statusStarted, setStatusStarted] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (!statusStarted && latest > 40) {
+      setStatusStarted(true);
+    }
+  });
+
   return (
     <div className="text-center space-y-8">
       <motion.div
@@ -59,22 +69,25 @@ export function Hero() {
         
         <div className="flex flex-col items-center gap-2 text-sm font-mono text-gray-500 pt-4">
           <motion.p
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{  duration: 3, delay: 4 }}
+            initial={{ opacity: 0 }}
+            animate={statusStarted ? { opacity: [0, 1, 0] } : { opacity: 0 }}
+            transition={{  duration: 3, delay: 2 }}
           >Entering Deep Space...
             
           </motion.p>
           <motion.p
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 3, delay: 6.8 }}
+            initial={{ opacity: 0 }}
+            animate={statusStarted ? { opacity: [0, 1, 0] } : { opacity: 0 }}
+            transition={{ duration: 3, delay: 4.8 }}
           >
             Loading experience...
           </motion.p>
           <motion.p
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ repeat:Infinity,duration: 3, delay: 9.6 }}
+            initial={{ opacity: 0 }}
+            animate={statusStarted ? { opacity: [0, 1, 0] } : { opacity: 0 }}
+            transition={{ repeat:Infinity,duration: 3, delay: 7.6 }}
           >
-            Ready.
+            Ready..
           </motion.p>
           
         </div>

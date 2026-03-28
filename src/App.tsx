@@ -5,6 +5,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect } from "react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { Wormhole } from "./components/Wormhole";
 import { Section } from "./components/Section";
 import { Splash } from "./components/Splash";
@@ -17,6 +18,56 @@ import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Outro } from "./components/Outro";
 import { Loader } from "@react-three/drei";
+
+function SectionParticle({ index, total }: { index: number; total: number }) {
+  const { scrollYProgress } = useScroll();
+
+  const start = index / total;
+  const end = (index + 1) / total;
+  const mid = start + (end - start) * 0.5;
+  const activationStart = Math.max(0, start - 0.04);
+  const activationEnd = Math.min(1, end + 0.04);
+
+  const fillOpacity = useSpring(
+    useTransform(
+      scrollYProgress,
+      [activationStart, start, mid, end, activationEnd],
+      [0.18, 0.45, 1, 0.45, 0.18]
+    ),
+    { stiffness: 180, damping: 26 }
+  );
+
+  const scaleY = useSpring(
+    useTransform(
+      scrollYProgress,
+      [activationStart, start, mid, end, activationEnd],
+      [0.25, 0.55, 1, 0.55, 0.25]
+    ),
+    { stiffness: 180, damping: 24 }
+  );
+
+  const glowOpacity = useSpring(
+    useTransform(
+      scrollYProgress,
+      [activationStart, start, mid, end, activationEnd],
+      [0, 0.25, 0.9, 0.25, 0]
+    ),
+    { stiffness: 180, damping: 24 }
+  );
+
+  return (
+    <div className="relative h-8 w-1 overflow-visible rounded-full bg-white/10">
+      <motion.div
+        className="absolute inset-0 rounded-full bg-cyan-400"
+        style={{ opacity: glowOpacity, scaleY }}
+      />
+      <motion.div
+        className="absolute inset-0 origin-center rounded-full bg-gradient-to-b from-sky-300 via-cyan-400 to-blue-500"
+        style={{ opacity: fillOpacity, scaleY }}
+      />
+    </div>
+  );
+}
 
 export default function App() {
   const TOTAL_SECTIONS = 8;
@@ -35,7 +86,7 @@ export default function App() {
       <Splash />
 
       {/* 3D Background Layer */}
-      <div className="fixed inset-0 z-0">
+      <div className="pointer-events-none fixed inset-0 z-0">
         <Canvas shadows gl={{ antialias: true }}>
           <Suspense fallback={null}>
             <Wormhole />
@@ -79,20 +130,9 @@ export default function App() {
       </div>
 
       {/* Progress Indicator */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
+      <div className="pointer-events-none fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
         {Array.from({ length: TOTAL_SECTIONS }).map((_, i) => (
-          <div 
-            key={i} 
-            className="w-1 h-8 bg-white/10 rounded-full overflow-hidden"
-          >
-            <div 
-              className="w-full h-full bg-blue-500 origin-top transition-transform duration-300"
-              style={{ 
-                transform: `scaleY(${Math.max(0, Math.min(1, (i + 1) / TOTAL_SECTIONS))})`,
-                opacity: 0.5
-              }}
-            />
-          </div>
+          <SectionParticle key={i} index={i} total={TOTAL_SECTIONS} />
         ))}
       </div>
 

@@ -1,34 +1,50 @@
-import { motion } from "motion/react";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 import { Mouse } from "lucide-react";
-import { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
+import { useState } from "react";
 
 export function Splash() {
+  const { scrollY } = useScroll();
   const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsVisible(false);
-      }
-    };
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsVisible(latest < 120);
+  });
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const opacity = useSpring(useTransform(scrollY, [0, 40, 120], [1, 0.82, 0]), {
+    stiffness: 110,
+    damping: 22,
+  });
+  const scale = useSpring(useTransform(scrollY, [0, 120], [1, 1.04]), {
+    stiffness: 110,
+    damping: 24,
+  });
+  const y = useSpring(useTransform(scrollY, [0, 120], [0, -20]), {
+    stiffness: 110,
+    damping: 24,
+  });
+  const backgroundOpacity = useTransform(scrollY, [0, 60, 140], [1, 0.75, 0]);
+  const titleOpacity = useTransform(scrollY, [0, 45, 120], [1, 0.9, 0]);
+  const titleY = useTransform(scrollY, [0, 120], [0, -12]);
+  const buttonOpacity = useTransform(scrollY, [0, 25, 75], [1, 0.65, 0]);
+  const buttonY = useTransform(scrollY, [0, 75], [0, 10]);
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
+      style={{ opacity, scale, y }}
+      className="pointer-events-none fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
     >
       {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ opacity: backgroundOpacity }}
+      >
         <Canvas camera={{ position: [0, 0, 10] }}>
           {/* Lighting is crucial for realistic 3D objects */}
           <ambientLight intensity={0.1} />
@@ -54,7 +70,7 @@ export function Splash() {
             <meshStandardMaterial color="#c2410c" roughness={0.8} />
           </mesh>
         </Canvas>
-      </div>
+      </motion.div>
 
       {/* Main Text Content */}
       <div className="relative z-10 pointer-events-none">
@@ -62,6 +78,7 @@ export function Splash() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          style={{ opacity: titleOpacity, y: titleY }}
           className="space-y-4 text-center"
         >
           <h1 className="text-6xl md:text-7xl font-black text-white uppercase tracking-widest drop-shadow-lg">
@@ -78,7 +95,8 @@ export function Splash() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
+        style={{ opacity: buttonOpacity, y: buttonY }}
+        className="pointer-events-auto absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
       >
         <motion.div
