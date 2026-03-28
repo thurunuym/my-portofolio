@@ -28,6 +28,7 @@ const TECH_LOGOS = [
 
 function LogoChip({ url, name, position, color }: { url: string, name: string, position: [number, number, number], color: string }) {
   const meshRef = useRef<THREE.Group>(null);
+  const chipRef = useRef<THREE.Group>(null);
   const texture = useLoader(THREE.TextureLoader, url);
   
   const randomOffset = useMemo(() => Math.random() * Math.PI * 2, []);
@@ -41,19 +42,20 @@ function LogoChip({ url, name, position, color }: { url: string, name: string, p
     meshRef.current.position.x = position[0] + Math.sin(t) * 0.1;
     meshRef.current.position.y = position[1] + Math.cos(t * 0.7) * 0.1;
     meshRef.current.position.z = position[2] + Math.sin(t * 1.1) * 0.1;
-    
-    // Slow rotation
-    meshRef.current.rotation.y += 0.005;
-    meshRef.current.rotation.z += 0.002;
+
+    // Keep each chip facing the camera so the logo/text don't flip away while orbiting.
+    if (chipRef.current) {
+      chipRef.current.quaternion.copy(state.camera.quaternion);
+    }
   });
 
   return (
     <group ref={meshRef}>
       <Float speed={0.8} rotationIntensity={0.5} floatIntensity={0.5}>
-        <group>
+        <group ref={chipRef}>
           {/* 3D Chip Body */}
           <mesh>
-            <boxGeometry args={[0.8, 0.8, 0.1]} />
+            <boxGeometry args={[1.05, 1.05, 0.12]} />
             <meshStandardMaterial 
               color={color} 
               metalness={0.8} 
@@ -66,25 +68,27 @@ function LogoChip({ url, name, position, color }: { url: string, name: string, p
           </mesh>
           
           {/* Front Face Logo */}
-          <mesh position={[0, 0, 0.051]}>
-            <planeGeometry args={[0.6, 0.6]} />
+          <mesh position={[0, 0, 0.061]}>
+            <planeGeometry args={[0.8, 0.8]} />
             <meshBasicMaterial map={texture} transparent />
           </mesh>
           
           {/* Back Face Logo */}
-          <mesh position={[0, 0, -0.051]} rotation={[0, Math.PI, 0]}>
-            <planeGeometry args={[0.6, 0.6]} />
+          <mesh position={[0, 0, -0.061]} rotation={[0, Math.PI, 0]}>
+            <planeGeometry args={[0.8, 0.8]} />
             <meshBasicMaterial map={texture} transparent />
           </mesh>
 
           {/* Label Glow */}
           <Text
-            position={[0, -0.6, 0]}
-            fontSize={0.12}
+            position={[0, -0.78, 0]}
+            fontSize={0.16}
             color="white"
             anchorX="center"
             anchorY="middle"
-            maxWidth={1}
+            maxWidth={1.4}
+            outlineWidth={0.01}
+            outlineColor="#0f172a"
           >
             {name}
           </Text>
