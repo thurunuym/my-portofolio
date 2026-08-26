@@ -21,18 +21,11 @@ export const EDUCATION = [
     institution: "Dharmaraja College Kandy",
     degree: "GCE OL , GCE AL",
   },
+
 ];
 
 export const EXPERIENCE = [
-  {
-  company: "Freelance",
-  role: "UI/UX Designer",
-  duration: "Jan 2025 - Present",
-  contributions: [
-    "Designed interfaces and prototypes using Figma.",
-    "Improved user experience through thoughtful and user-centered design.",
-  ],
-},
+
   {
     company: "Appwhiz Solutions",
     role: "Web Developer",
@@ -46,15 +39,25 @@ export const EXPERIENCE = [
   {
     company: "Infinity AI",
     role: "Software Engineer Intern",
-    duration: "Oct 2025 - Apr 2026",
+    duration: "Oct 2025 - May 2026",
     contributions: [
       "Built and optimized backend services using Node.js, Express.js, and PostgreSQL.",
-    "Developed scalable frontend features with React and Redux Toolkit (RTK).",
-    "Engineered high-performance APIs with FastAPI for efficient data processing.",
-    "Containerized applications and improved deployment consistency using Docker."
+      "Developed scalable frontend features with React and Redux Toolkit (RTK).",
+      "Engineered high-performance APIs with FastAPI for efficient data processing.",
+      "Containerized applications and improved deployment consistency using Docker."
     ],
   },
-
+  {
+    company: "NEWNOP",
+    role: "associate Software Engineer",
+    duration: "June 2026 - Present",
+    contributions: [
+      "Developed high-performance, modern frontend interfaces using React and Next.js.",
+      "Architected robust state management systems leveraging Redux Toolkit and Zustand.",
+      "Optimized data fetching and server-state caching using TanStack React Query.",
+      "Integrated i18next to deliver multi-language localization and translation support."
+    ],
+  },
 ];
 
 export const TECH_STACK = {
@@ -88,7 +91,7 @@ export const PROJECTS = [
   {
     name: "ChatWhiz",
     description: "A real-time chat application built for seamless chatting.",
-    tech: ["React", "Node.js", "Express.js","MongoDB","Socket.io"],
+    tech: ["React", "Node.js", "Express.js", "MongoDB", "Socket.io"],
     links: { github: "https://github.com/thurunuym/ChatWhiz", live: "https://chatwhiz-kpvi.onrender.com/", video: "#" },
     color: "#4f46e5",
   },
@@ -96,13 +99,13 @@ export const PROJECTS = [
     name: "AI based Fitness Recommendation System",
     description: "An AI-driven fitness recommendation system using microservices architecture.",
     tech: ["React", "SpringBoot", "PostgreSQL", "RabbitMQ", "Eureka", "KeyCloak", "Gemini API"],
-    links: { github: "#"},
+    links: { github: "#" },
     color: "#ec4899",
   },
   {
     name: "WhizWalt",
     description: "A banking web application that allows users to securely connect their bank accounts, view balances, and track transactions",
-    tech: ["NextJS", "TypeScript", "Appwrite" , "ShadCN","Plaid","Zod"],
+    tech: ["NextJS", "TypeScript", "Appwrite", "ShadCN", "Plaid", "Zod"],
     links: { github: "https://github.com/ShashithaU/Sports-Center-Frontend", live: "#" },
     color: "#f43f5e",
   },
@@ -110,7 +113,7 @@ export const PROJECTS = [
   {
     name: "E-Commerce Platform",
     description: "A fully functional E-Commerce platform for sports item shop.",
-    tech: ["React", "SpringBoot", "Redis" , "MySQL"],
+    tech: ["React", "SpringBoot", "Redis", "MySQL"],
     links: { github: "https://github.com/ShashithaU/Sports-Center-Frontend" },
     color: "#f43f5e",
   },
@@ -125,13 +128,13 @@ export const PROJECTS = [
     name: "Sign Language Detector",
     description: "A real-time sign language detector for selected signs",
     tech: ["YOLOv8", "Python", "Flask"],
-    links: { github: "https://github.com/thurunuym/sign-language-detector",video: "#"  },
+    links: { github: "https://github.com/thurunuym/sign-language-detector", video: "#" },
     color: "#8b5cf6",
   },
   {
     name: "Card Flipping Game",
     description: "A simple card flipping game deployed on AWS to explore AWS services.",
-    tech: ["AWS S3", "CodePipeline", "HTML" , "JavaScript"],
+    tech: ["AWS S3", "CodePipeline", "HTML", "JavaScript"],
     links: { github: "#", live: "#" },
     color: "#f43f5e",
   },
