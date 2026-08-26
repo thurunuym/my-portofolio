@@ -7,6 +7,11 @@ export const SOCIAL_LINKS = [
 
 export const EDUCATION = [
   {
+    duration: "2026",
+    institution: "SLIM (Sri Lanka Institute of Marketing)",
+    degree: "Diploma In Digital Marketing",
+  },
+  {
     duration: "2022-2026",
     institution: "University of Kelaniya",
     degree: "Bcs. (Hons) in Electronics and Computer Science",
